@@ -1,8 +1,39 @@
 import React, { Component } from 'react'
+import Login_register from './Login_register';
 
 export default class header extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            status: true
+        }
+    }
+
+    trangthai = () =>{
+        this.setState({
+            status: !this.state.status
+        })
+    }
+
+    HienThi = () => {
+        if(this.state.status === false){
+            return ;
+
+        } else {
+            return (
+
+                <Login_register></Login_register>
+
+            )
+        }
+    }
+
+
     render() {
+
         return (
+    
+
             <div className="header">
                 <div className="menu-box">
                     <div className="menu-btn">
@@ -12,25 +43,19 @@ export default class header extends Component {
                     </div>
                     <span className="logo">Mr.Xe Ômmm</span>
                 </div>
+                
 
                 <div className="header-user">
-                    <div className="users" href="#/">
                         
-                        <div className="dropdown user-name">
-                            <a className="dropdown-toggle" href="#/" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Valerie Luna
-                            </a>
-                            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a className="dropdown-item" href="#/">Thông Tin</a>
-                                <a className="dropdown-item" href="#/">Đăng Xuất</a>
-                            </div>
-                        </div>
+                    <div className="dang-nhap">
+                        <a className="" href="#/" onClick={() => this.trangthai()}>
+                            Đăng Nhập/ Đăng Ký
+                        </a>
+        
+                    </div>
 
-                        <div className="users-image"> 
-                            <img src="https://source.unsplash.com/QAB-WJcbgJk/60x60" alt="hinh"/>
-                        </div>
-
-                    </div >
+                    { this.HienThi() }
+                    
                 </div>
             </div>
         )

@@ -1,11 +1,12 @@
 $Mau_Nen_main: #fff;
 $Mau_Nen_nav: #272730;
-$Mau_Nen_user:#32323d;
+$Mau_Nen_user:#1ab188;
 
 $Mau_Border: #222;
 
-$Mau_Chu_1: #fff;
+$Mau_Chu_1: #1ab188;
 $Mau_Chu_2: #ccc;
+$Mau_Chu_3: #FFFFFF;
 
 $font_chu:'Segoe UI',
 Tahoma,
@@ -63,7 +64,7 @@ nav {
 
         .users {
             float: left;
-            color: $Mau_Chu_1;
+            color: $Mau_Chu_3;
 
             p {
                 margin-left: 15px;
@@ -79,11 +80,6 @@ nav {
         list-style: none;
         clear: both;
 
-        // dasdasd
-        // !sddasdasd
-        // ?sdfsdfsdfsd
-        // *dadasdasda
-        // TODO: dasdasda
         a {
             cursor: pointer;
             text-decoration: none !important;
@@ -103,13 +99,11 @@ nav {
                 }
 
                 &:hover {
-                    background: #444;
                     font-weight: 400;
                     color: $Mau_Chu_1;
                 }
 
                 &:hover i {
-                    background: #444;
                     font-weight: 400;
                     color: $Mau_Chu_1;
                 }
@@ -156,50 +150,15 @@ main {
             top: 0;
             right: 0;
             margin-right: 20px;
-
-            a {
-                color: $Mau_Chu_2;
-            }
-
-            .users {
-                .users-image {
-                    height: 40px;
-                    width: 40px;
-                    float: left;
-                    line-height: 60px;
-                }
-
-                img {
-                    border-radius: 50%;
-                    width: 100%;
-
-                }
-
-                .user-name {
-                    float: left;
-                    line-height: 60px;
-                    margin-right: 25px;
-
-                    a {
-                        text-decoration: none;
-                    }
-
-                    .dropdown-menu {
-                        background-color: $Mau_Nen_nav;
-                        color: $Mau_Chu_1;
-
-                        .dropdown-item {
-                            color: #fff;
-                        }
-
-                        a {
-                            &:hover {
-                                background: $Mau_Nen_user;
-                                font-weight: 400;
-                                color: $Mau_Chu_1;
-                            }
-                        }
-                    }
+            width: 500px;
+            .dang-nhap{
+                position: absolute;
+                top: 15px;
+                right: 20px;
+                width: 200px;
+                a{
+                    text-decoration: none;
+                   
                 }
             }
         }

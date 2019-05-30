@@ -32,7 +32,7 @@ nav .header {
   width: 100%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  background-color: #32323d;
+  background-color: #1ab188;
   font-weight: bold;
   border-bottom: 2px solid #222;
   border-top: 2px solid #222;
@@ -52,7 +52,7 @@ nav .header .users-image img {
 
 nav .header .users {
   float: left;
-  color: #fff;
+  color: #FFFFFF;
 }
 
 nav .header .users p {
@@ -89,15 +89,13 @@ nav ul a li i {
 }
 
 nav ul a li:hover {
-  background: #444;
   font-weight: 400;
-  color: #fff;
+  color: #1ab188;
 }
 
 nav ul a li:hover i {
-  background: #444;
   font-weight: 400;
-  color: #fff;
+  color: #1ab188;
 }
 
 main {
@@ -147,47 +145,18 @@ main .header .header-user {
   top: 0;
   right: 0;
   margin-right: 20px;
+  width: 500px;
 }
 
-main .header .header-user a {
-  color: #ccc;
+main .header .header-user .dang-nhap {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  width: 200px;
 }
 
-main .header .header-user .users .users-image {
-  height: 40px;
-  width: 40px;
-  float: left;
-  line-height: 60px;
-}
-
-main .header .header-user .users img {
-  border-radius: 50%;
-  width: 100%;
-}
-
-main .header .header-user .users .user-name {
-  float: left;
-  line-height: 60px;
-  margin-right: 25px;
-}
-
-main .header .header-user .users .user-name a {
+main .header .header-user .dang-nhap a {
   text-decoration: none;
-}
-
-main .header .header-user .users .user-name .dropdown-menu {
-  background-color: #272730;
-  color: #fff;
-}
-
-main .header .header-user .users .user-name .dropdown-menu .dropdown-item {
-  color: #fff;
-}
-
-main .header .header-user .users .user-name .dropdown-menu a:hover {
-  background: #32323d;
-  font-weight: 400;
-  color: #fff;
 }
 
 main .header .menu-box {
@@ -207,7 +176,7 @@ main .header .user-box {
 
 main .header .logo {
   margin-left: 35px;
-  color: #fff;
+  color: #1ab188;
   line-height: 55px;
   font-size: 22px;
 }
@@ -240,7 +209,7 @@ main .header .menu-btn .menu-bar {
   transition: 0.5s;
   display: block;
   height: 10%;
-  background-color: #fff;
+  background-color: #1ab188;
 }
 
 .toggled {
