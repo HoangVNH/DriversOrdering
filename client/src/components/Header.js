@@ -1,18 +1,39 @@
 import React, { Component } from 'react'
-import Login_register from './Login_register';
+
+import '../css/login_register/login_register.css';
+import '../js/login';
+
+import Signup from './Signup';
+import Login from './Login';
 
 export default class header extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            status: true
+            status: true,
+            loginAndRegister: false
         }
     }
 
-    trangthai = () =>{
+
+    trangthaiForm = () =>{
         this.setState({
             status: !this.state.status
         })
+    }
+
+    trangthai_loginAndRegister = () =>{
+        this.setState({
+            loginAndRegister: !this.state.loginAndRegister
+        })
+    }
+
+    HienThiFrom = () =>{
+        if(this.state.loginAndRegister === true){
+            return <Signup></Signup>
+        } else {
+            return <Login></Login>
+        }
     }
 
     HienThi = () => {
@@ -22,7 +43,21 @@ export default class header extends Component {
         } else {
             return (
 
-                <Login_register></Login_register>
+                <div className="form">
+                    <ul className="tab-group">
+                        <li className="tab ">
+                            <a href="#signup" onClick={() => this.trangthai_loginAndRegister()}>Đăng Ký</a>
+                        </li>
+                        <li className="tab active">
+                            <a href="#login" onClick={() => this.trangthai_loginAndRegister()}>Đăng Nhập</a>
+                        </li>
+                    </ul>
+                    <div className="tab-content">
+                        
+                        { this.HienThiFrom() }
+                        
+                    </div>
+                </div>
 
             )
         }
@@ -48,7 +83,7 @@ export default class header extends Component {
                 <div className="header-user">
                         
                     <div className="dang-nhap">
-                        <a className="" href="#/" onClick={() => this.trangthai()}>
+                        <a className="" href="#/" onClick={() => this.trangthaiForm()}>
                             Đăng Nhập/ Đăng Ký
                         </a>
         

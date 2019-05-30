@@ -3,7 +3,6 @@ import { default as GLOBAL } from './components/Constants';
 
 import './css/nav/nav.css';
 import './js/nav';
-import './js/checkfile';
 
 import Map from './components/Map';
 import Nav from './components/Nav';
