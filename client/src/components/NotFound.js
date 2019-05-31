@@ -10,6 +10,7 @@ export default class About extends PureComponent {
         return (
            <div className="found">
                 <section className="error-container">
+                    <h1>TRANG BẠN TÌM THẤY KHÔNG KHẢ DỤNG</h1>
                     <span>4</span>
                     <span><span className="screen-reader-text">0</span></span>
                     <span>4</span>
