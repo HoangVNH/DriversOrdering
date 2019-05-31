@@ -3,7 +3,7 @@
 import React, { PureComponent } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import '../css/not_found/notfound.css';
+import '../css/not_found_about/notfound.css';
 export default class About extends PureComponent {
 
     render() {
