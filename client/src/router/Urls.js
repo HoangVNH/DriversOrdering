@@ -12,7 +12,6 @@ import Info from '../components/Info';
 class Urls extends Component {
     render() {
         return (
-            <div>
                 <Switch>
                     <Route path="/" exact component={Map} />
                     <Route path="/login" component={Login} />
@@ -22,7 +21,6 @@ class Urls extends Component {
                     <Route path="/info" component={Info} />
                     <Route component={NotFound} />
                 </Switch>
-            </div>
         );
     }
 }

@@ -1,0 +1,64 @@
+.about-team {
+    background-image: url('../../images/backfround.jpg');
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    color: #ffffff;
+    padding: 100px;
+}
+
+.bout-team-title {
+    font-weight: 600;
+}
+
+.card-body {
+    background-color: #4d857a;
+}
+
+.card-body h5 {
+    color: #383838;
+    font-weight: bold;
+}
+
+.social {
+    text-align: center;
+}
+
+.social i {
+    padding: 0 15px;
+    cursor: pointer;
+    color: #383838;
+    font-size: 20px;
+}
+
+.social i:hover {
+    color: #1ab188;
+}
+
+.about-img .nenxam{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 100;
+}
+
+.imgs {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.imgs img {
+    width: 100%;
+}
+
+.imgs:hover img {
+    transform: scale(1.1);
+    transition: 1.2;
+
+    transition: transform 0.5s ease;
+}
+.card{
+    border: 1px solid #555555 !important;
+}

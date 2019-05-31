@@ -6,7 +6,7 @@ export default class nav extends Component {
         return (
             <nav>
                 <ul>
-                    <NavLink to="/">
+                    <NavLink to="/info">
                         <li className="cli"> 
                             <i className="fa fa-user-circle-o"></i>
                             Thông Tin Cá Nhân
@@ -28,17 +28,6 @@ export default class nav extends Component {
                     </NavLink>
                 </ul>
             </nav>
-
-                        <NavLink to="/about">
-                            <li> 
-                                <i className="fa fa-edit"></i>
-                                Liên Hệ
-                            </li>
-                        </NavLink>
-                    </ul>
-                </nav>
-            </div>
-
         )
     }
 }
