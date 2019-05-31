@@ -1,0 +1,255 @@
+$Mau_Nen_main: #fff;
+$Mau_Nen_nav: #272730;
+$Mau_Nen_user:#1ab188;
+
+$Mau_Border: #222;
+
+$Mau_Chu_1: #1ab188;
+$Mau_Chu_2: #ccc;
+$Mau_Chu_3: #FFFFFF;
+
+$font_chu:'Segoe UI',
+Tahoma,
+Geneva,
+Verdana,
+sans-serif;
+$font_size_1: 18px;
+$font_size_2: 22px;
+$font_size_3: 17px;
+
+$transition-time: 0.5s;
+
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+    text-size-adjust: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+main {
+    position: relative;
+    top: 45px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    transition: $transition-time;
+    -webkit-transition: left $transition-time;
+}
+
+nav {
+    background-color: $Mau_Nen_nav;
+    position: fixed;
+    top: 45px;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    z-index: 1;
+    box-sizing: border-box;
+    transition: $transition-time;
+
+    .users-image {
+        float: left;
+
+        i {
+            color: $Mau_Nen_nav;
+            font-size: 50px;
+
+        }
+    }
+
+    .user {
+        float: left;
+        color: $Mau_Chu_3;
+
+        a {
+            margin-left: 15px;
+            line-height: 50px;
+            color: $Mau_Chu_3;
+            text-decoration: none;
+        }
+    }
+}
+
+ul {
+    display: block;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    clear: both;
+
+    a {
+        cursor: pointer;
+        text-decoration: none !important;
+
+        li {
+            display: block;
+            padding: 15px 30px;
+            border-bottom: 1px solid #0a0a0a;
+            cursor: pointer;
+            color: $Mau_Chu_2;
+            font-family: $font_chu;
+            font-size: $font_size_1;
+
+            i {
+                margin-right: 10px;
+                color: $Mau_Chu_2;
+            }
+
+            &:hover {
+                font-weight: 400;
+                color: $Mau_Chu_1;
+            }
+
+            &:hover i {
+                font-weight: 400;
+                color: $Mau_Chu_1;
+            }
+
+        }
+    }
+}
+
+.header {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    top: 0;
+    left: 0;
+    padding: 1px 2em;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: $Mau_Nen_nav;
+    height: 45px;
+
+    font-weight: bold;
+    justify-content: flex-start;
+    z-index: 10000 !important;
+
+    .header-user {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin-right: 20px;
+        width: 500px;
+
+        .dang-xuat {
+            position: absolute;
+            top: 9px;
+            right: -80px;
+            width: 200px;
+
+            a {
+                text-decoration: none;
+
+            }
+        }
+    }
+
+    .menu-box {
+        display: fixed;
+        height: 100%;
+    }
+
+    .user-box {
+        display: flex;
+        flex-direction: row-reverse;
+
+        a {
+            color: $Mau_Chu_1;
+            text-decoration: none;
+        }
+    }
+
+    .logo {
+        margin-left: 25px;
+        color: $Mau_Chu_1;
+        line-height: 45px;
+        font-size: $font_size_3;
+        text-decoration: none;
+    }
+
+    .user {
+        font-weight: normal;
+        display: block;
+        line-height: 30px;
+    }
+
+    .menu-btn {
+        height: 25px;
+        width: 25px;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin-top: 10px;
+        float: left;
+
+        .menu-bar {
+            transition: $transition-time;
+            display: block;
+            height: 15%;
+            background-color: $Mau_Chu_1;
+        }
+    }
+}
+
+.toggled-map {
+    left: 250px;
+    top: 45px;
+    box-sizing: border-box;
+    padding: 0;
+    overflow: hidden;
+    height: 100%;
+}
+
+.toggled {
+    left: 0px;
+    top: 45px;
+    box-sizing: border-box;
+    padding: 0;
+    overflow: hidden;
+    height: 100%;
+}
+
+.button-open-transition {
+    border-color: $Mau_Border;
+    transition: $transition-time;
+}
+
+.button-open {
+    .menu-bar-top {
+        @extend .button-open-transition;
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .menu-bar-middle {
+        background-color: #fff;
+        transform: translate(250px);
+        transition: 0.1s ease-in;
+        opacity: 0;
+    }
+
+    .menu-bar-bottom {
+        @extend .button-open-transition;
+        transform: rotate(-45deg) translate(7px, -7px);
+    }
+}
+
+
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 576px) {
+    .user-box {
+        justify-content: center;
+    }
+}

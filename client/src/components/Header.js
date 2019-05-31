@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import '../css/login_register/login_register.css';
 import '../js/login';
 
+
+
 import Signup from './Signup';
 import Login from './Login';
 
@@ -76,20 +78,20 @@ export default class header extends Component {
                         <span className="menu-bar menu-bar-middle" />
                         <span className="menu-bar menu-bar-bottom" />
                     </div>
-                    <span className="logo">Mr.Xe Ômmm</span>
+                    <a href="/" className="logo">Mr.Xe Ômmm</a>
                 </div>
                 
 
                 <div className="header-user">
                         
-                    <div className="dang-nhap">
-                        <a className="" href="#/" onClick={() => this.trangthaiForm()}>
-                            Đăng Nhập/ Đăng Ký
+                    <div className="dang-xuat">
+
+                        <a className="" href="#/">
+                            Đăng Xuất <i className="fa fa-sign-out"></i>
                         </a>
         
                     </div>
 
-                    { this.HienThi() }
                     
                 </div>
             </div>

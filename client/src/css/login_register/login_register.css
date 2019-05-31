@@ -180,6 +180,10 @@ textarea {
   text-align: right;
 }
 
+.forgot a {
+  text-decoration: none;
+}
+
 input[type=file] {
   background: #6c757d;
   margin-bottom: 10px;

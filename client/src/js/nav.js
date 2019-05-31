@@ -7,7 +7,8 @@ $(document).ready(function () {
     $(function () {
 
         $('.menu-btn').on('click', function () {
-            $('main').toggleClass('toggled');
+            $('nav').toggleClass('toggled');
+            $('main').toggleClass('toggled-map');
             $(this).toggleClass("button-open");
         })
 

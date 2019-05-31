@@ -1,35 +1,26 @@
 import React, { Component } from 'react'
+import { NavLink } from 'react-router-dom'
 
 export default class nav extends Component {
     render() {
         return (
             <div className="">
                 <nav>
-                    <div className="header">
-
-                        <div className="users-image"> 
-                            <img src="https://source.unsplash.com/QAB-WJcbgJk/60x60" alt="hinh" />
-                        </div>
-                        <div className="users"> 
-                            <p>Valerie Luna</p>
-                        </div>
-
-                    </div>
 
                     <ul>
-                        <a href="#/">
+                        <NavLink to="/">
                             <li> 
-                                <i className="fa fa-edit"></i>
-                                Painel de controle
+                                <i className="fa fa-user-circle-o"></i>
+                                Thông Tin Cá Nhân
                             </li>
-                        </a>
+                        </NavLink>
 
-                        <a href="#/">
+                        <NavLink to="/login">
                             <li> 
-                                <i className="fa fa-edit"></i>
-                                Painel de controle
+                                <i className="fa fa-sign-in"></i>
+                                Đăng Nhập
                             </li>
-                        </a>
+                        </NavLink>
 
                         <a href="#/">
                             <li> 

@@ -15,52 +15,54 @@ body {
           box-sizing: border-box;
 }
 
+main {
+  position: relative;
+  top: 45px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  -webkit-transition: left 0.5s;
+}
+
 nav {
   background-color: #272730;
   position: fixed;
-  top: 60px;
-  left: 0;
+  top: 45px;
+  left: -250px;
   width: 250px;
   height: 100%;
   z-index: 1;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
-nav .header {
-  padding: 10px 15px;
-  width: 100%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  background-color: #1ab188;
-  font-weight: bold;
-  border-bottom: 2px solid #222;
-  border-top: 2px solid #222;
-  height: 75px;
-}
-
-nav .header .users-image {
-  width: 50px;
-  height: 50px;
+nav .users-image {
   float: left;
 }
 
-nav .header .users-image img {
-  width: 100%;
-  border-radius: 50% !important;
+nav .users-image i {
+  color: #272730;
+  font-size: 50px;
 }
 
-nav .header .users {
+nav .user {
   float: left;
   color: #FFFFFF;
 }
 
-nav .header .users p {
+nav .user a {
   margin-left: 15px;
   line-height: 50px;
+  color: #FFFFFF;
+  text-decoration: none;
 }
 
-nav ul {
+ul {
   display: block;
   margin: 0;
   padding: 0;
@@ -68,12 +70,12 @@ nav ul {
   clear: both;
 }
 
-nav ul a {
+ul a {
   cursor: pointer;
   text-decoration: none !important;
 }
 
-nav ul a li {
+ul a li {
   display: block;
   padding: 15px 30px;
   border-bottom: 1px solid #0a0a0a;
@@ -83,40 +85,22 @@ nav ul a li {
   font-size: 18px;
 }
 
-nav ul a li i {
+ul a li i {
   margin-right: 10px;
   color: #ccc;
 }
 
-nav ul a li:hover {
+ul a li:hover {
   font-weight: 400;
   color: #1ab188;
 }
 
-nav ul a li:hover i {
+ul a li:hover i {
   font-weight: 400;
   color: #1ab188;
 }
 
-main {
-  display: block;
-  position: absolute;
-  top: 60px;
-  left: 0px;
-  width: 100%;
-  background-color: #fff;
-  height: 100%;
-  -webkit-text-size-adjust: 100%;
-     -moz-text-size-adjust: 100%;
-      -ms-text-size-adjust: 100%;
-          text-size-adjust: 100%;
-  overflow: hidden;
-  z-index: 500;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-}
-
-main .header {
+.header {
   position: fixed;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -127,12 +111,12 @@ main .header {
           flex-direction: row;
   top: 0;
   left: 0;
-  min-height: 60px;
   padding: 1px 2em;
   width: 100%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   background-color: #272730;
+  height: 45px;
   font-weight: bold;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
@@ -140,7 +124,7 @@ main .header {
   z-index: 10000 !important;
 }
 
-main .header .header-user {
+.header .header-user {
   position: absolute;
   top: 0;
   right: 0;
@@ -148,23 +132,23 @@ main .header .header-user {
   width: 500px;
 }
 
-main .header .header-user .dang-nhap {
+.header .header-user .dang-xuat {
   position: absolute;
-  top: 15px;
-  right: 20px;
+  top: 9px;
+  right: -80px;
   width: 200px;
 }
 
-main .header .header-user .dang-nhap a {
+.header .header-user .dang-xuat a {
   text-decoration: none;
 }
 
-main .header .menu-box {
+.header .menu-box {
   display: fixed;
   height: 100%;
 }
 
-main .header .user-box {
+.header .user-box {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -174,22 +158,28 @@ main .header .user-box {
           flex-direction: row-reverse;
 }
 
-main .header .logo {
-  margin-left: 35px;
+.header .user-box a {
   color: #1ab188;
-  line-height: 55px;
-  font-size: 22px;
+  text-decoration: none;
 }
 
-main .header .user {
+.header .logo {
+  margin-left: 25px;
+  color: #1ab188;
+  line-height: 45px;
+  font-size: 17px;
+  text-decoration: none;
+}
+
+.header .user {
   font-weight: normal;
   display: block;
   line-height: 30px;
 }
 
-main .header .menu-btn {
-  height: 30px;
-  width: 30px;
+.header .menu-btn {
+  height: 25px;
+  width: 25px;
   cursor: pointer;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -204,17 +194,27 @@ main .header .menu-btn {
   float: left;
 }
 
-main .header .menu-btn .menu-bar {
+.header .menu-btn .menu-bar {
   -webkit-transition: 0.5s;
   transition: 0.5s;
   display: block;
-  height: 10%;
+  height: 15%;
   background-color: #1ab188;
 }
 
-.toggled {
+.toggled-map {
   left: 250px;
-  top: 60px;
+  top: 45px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
+}
+
+.toggled {
+  left: 0px;
+  top: 45px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding: 0;
@@ -229,8 +229,8 @@ main .header .menu-btn .menu-bar {
 }
 
 .button-open .menu-bar-top {
-  -webkit-transform: rotate(45deg) translate(8px, 8px);
-          transform: rotate(45deg) translate(8px, 8px);
+  -webkit-transform: rotate(45deg) translate(5px, 5px);
+          transform: rotate(45deg) translate(5px, 5px);
 }
 
 .button-open .menu-bar-middle {
