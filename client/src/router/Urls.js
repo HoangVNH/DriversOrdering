@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Route } from 'react-router'
+import React, { Component } from './node_modules/react';
+import { Route } from './node_modules/react-router'
 
 import Map from '../components/Map';
 import Login from '../components/Login';
