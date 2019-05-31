@@ -22,7 +22,7 @@ export default class nav extends Component {
 
                     <a href="/about">
                         <li> 
-                            <i className="fa fa-edit"></i>
+                            <i className="fa fa-info-circle"></i>
                             Thông Tin Liên Hệ
                         </li>
                     </a>
