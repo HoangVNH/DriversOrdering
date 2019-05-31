@@ -14,11 +14,11 @@ class Urls extends Component {
         return (
                 <Switch>
                     <Route path="/" exact component={Map} />
-                    <Route path="/login" component={Login} />
-                    <Route path="/signup" component={Signup} />
-                    <Route path="/forget_pass" component={Forget_pass} />
-                    <Route path="/about" component={About} />
-                    <Route path="/info" component={Info} />
+                    <Route path="/login" exact component={Login} />
+                    <Route path="/signup" exact component={Signup} />
+                    <Route path="/login/forget_pass" exact component={Forget_pass} />
+                    <Route path="/about" exact component={About} />
+                    <Route path="/info" exact component={Info} />
                     <Route component={NotFound} />
                 </Switch>
         );

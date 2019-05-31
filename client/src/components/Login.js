@@ -75,7 +75,7 @@ class Login extends Component {
 
                                         </div>
 
-                                        <p className="forgot"><NavLink to="/forget_pass">Quên mật khẩu?</NavLink></p>
+                                        <p className="forgot"><NavLink to="/login/forget_pass">Quên mật khẩu?</NavLink></p>
 
                                         <button type="submit" className="button button-block">Đăng Nhập</button>
                                     </form>
