@@ -29,6 +29,16 @@ export default class nav extends Component {
                 </ul>
             </nav>
 
+                        <NavLink to="/about">
+                            <li> 
+                                <i className="fa fa-edit"></i>
+                                Liên Hệ
+                            </li>
+                        </NavLink>
+                    </ul>
+                </nav>
+            </div>
+
         )
     }
 }
