@@ -12,6 +12,10 @@ $(document).ready(function () {
             $(this).toggleClass("button-open");
         })
 
+        $('.cli').on('click', function () {
+            $('nav').toggleClass('toggled');
+        })
+
     });
 
     $('.tab a').on('click', function (e) {
