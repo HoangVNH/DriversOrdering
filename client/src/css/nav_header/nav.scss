@@ -26,14 +26,25 @@ body {
     text-size-adjust: 100%;
     margin: 0;
     padding: 0;
-    background-image: url('../../images/backfround.jpg');
-    background-size: cover;
+    .root{
+        width: 100%;
+        height: 100%;
+    }
 }
 
 * {
     box-sizing: border-box;
 }
-
+.bgLogin{
+    background-image: url('../../images/backfround.jpg');
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    .dangky-dangnhap{
+        margin: 0 auto;
+        height: 100%;
+    }
+}
 main {
     position: relative;
     top: 45px;
@@ -52,7 +63,7 @@ nav {
     left: -250px;
     width: 250px;
     height: 100%;
-    z-index: 1;
+    z-index: 10 !important;
     box-sizing: border-box;
     transition: $transition-time;
 

@@ -11,16 +11,14 @@ import About from '../components/About';
 class Urls extends Component {
     render() {
         return (
-            <div>
-                <Switch>
-                    <Route path="/" exact component={Map} />
-                    <Route path="/login" component={Login} />
-                    <Route path="/signup" component={Signup} />
-                    <Route path="/forget_pass" component={Forget_pass} />
-                    <Route path="/about" component={About} />
-                    <Route component={NotFound} />
-                </Switch>
-            </div>
+            <Switch>
+                <Route path="/" exact component={Map} />
+                <Route path="/login" component={Login} />
+                <Route path="/signup" component={Signup} />
+                <Route path="/forget_pass" component={Forget_pass} />
+                <Route path="/about" component={About} />
+                <Route component={NotFound} />
+            </Switch>
         );
     }
 }

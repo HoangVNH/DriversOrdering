@@ -4,10 +4,9 @@ import { NavLink } from 'react-router-dom';
 class Login extends Component {
     render() {
         return (
-            <div className="container">
+            <div className="bgLogin">
                 <div className="row">
-                    <div className="col-md-3"></div>
-                    <div className="col-md-6">
+                    <div className="dangky-dangnhap">
                         <div className="form">
                             <ul className="tab-group">
                                 <li className="tab ">
@@ -40,7 +39,6 @@ class Login extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-3"></div>
                 </div>
             </div>
         );
