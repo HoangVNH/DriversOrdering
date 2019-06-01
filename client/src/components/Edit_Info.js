@@ -3,8 +3,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import hinhanh from '../images/avatar_1.jpg';
-import '../css/lightbox.css';
-
 
 export default class Edit_Info extends Component {
 
@@ -56,16 +54,8 @@ export default class Edit_Info extends Component {
 
                         </form>
 
-                        
-
                     </div>
                     <div className="col-md-4">
-
-                    <div className="img-wrapper">
-                        <div className="img-item text-center">
-                            <img src="https://images.pexels.com/photos/269923/pexels-photo-269923.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="hinh1" className="img-fluid" />
-                        </div>
-                    </div>
 
 
                     </div>
