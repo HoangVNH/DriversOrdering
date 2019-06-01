@@ -5,7 +5,6 @@ import {
   withScriptjs,
   withGoogleMap,
   GoogleMap,
-  Marker
 } from "react-google-maps";
 import { compose, withProps } from "recompose";
 
@@ -41,6 +40,24 @@ const MyMapComponent = compose(
 )(props => (
   <GoogleMap
     defaultZoom={19}
+    defaultOptions={{
+      mapTypeControl: false,
+      streetViewControl: false,
+      fullscreenControl: false,
+      scaleControl: false,
+      rotateControl: false,
+      styles: [
+          {
+            featureType: 'poi.business',
+            stylers: [{visibility: 'off'}]
+          },
+          {
+            featureType: 'transit',
+            elementType: 'labels.icon',
+            stylers: [{visibility: 'off'}]
+          }
+        ]
+    }}
     defaultCenter={{
       lat: GLOBAL.LATLNG.lat,
       lng: GLOBAL.LATLNG.lng
