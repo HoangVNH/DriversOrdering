@@ -22,4 +22,45 @@
   height: 3px;
   background-color: #555555;
 }
+
+.jumbotron {
+  background-image: url("../../images//background_2.jpg");
+  background-size: cover;
+}
+
+.jumbotron h1 {
+  color: #ffffff;
+}
+
+#survey-form .title {
+  color: #1ab188 !important;
+}
+
+#survey-form .form-group .form-control:focus {
+  border-color: #1ab188 !important;
+  outline-color: #1ab188 !important;
+}
+
+.form-hinhanh h5 {
+  color: #1ab188 !important;
+}
+
+.form-hinhanh p {
+  float: left;
+  margin-left: 30px;
+  margin-top: 23px;
+}
+
+.form-hinhanh .form-group {
+  clear: both;
+}
+
+.form-hinhanh .form-group .form-control {
+  height: 43px;
+  color: #555555;
+}
+
+.form-hinhanh .thay-doi {
+  margin-top: 23px;
+}
 /*# sourceMappingURL=info.css.map */

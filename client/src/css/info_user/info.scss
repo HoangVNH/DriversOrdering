@@ -18,7 +18,46 @@
             background-color: #555555;
         }
     }
-    .info-content{
-        
+    
+}
+.jumbotron{
+    background-image: url("../../images//background_2.jpg");
+    background-size: cover;
+    h1{
+        color: #ffffff;
+    }
+}
+
+#survey-form{
+    
+    .title{
+        color: #1ab188 !important;
+    }
+    .form-group{
+        .form-control:focus{
+            border-color: #1ab188 !important;
+            outline-color: #1ab188 !important;
+        }
+    }
+}
+
+.form-hinhanh{
+    h5{
+        color: #1ab188 !important;
+    }
+    p{
+        float: left;
+        margin-left: 30px;
+        margin-top: 23px;
+    }
+    .form-group{
+        clear: both;
+        .form-control{
+            height: 43px;
+            color: #555555;
+        }
+    }
+    .thay-doi{
+        margin-top: 23px;
     }
 }

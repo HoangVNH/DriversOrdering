@@ -187,7 +187,8 @@ textarea {
 }
 
 input[type=file] {
-  background: #6c757d;
+  background: #20e6b1;
+  color: #555555;
   margin-bottom: 10px;
 }
 /*# sourceMappingURL=login_register.css.map */

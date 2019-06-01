@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import '../css/info_user/info.css';
 import { NavLink } from 'react-router-dom';
+
+import '../css/info_user/info.css';
 import '../css/lightBox/lightbox.css';
 import '../js/lightbox-plus-jquery';
 

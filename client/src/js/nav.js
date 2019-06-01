@@ -12,6 +12,7 @@ $(document).ready(function () {
 
         $('.cli').on('click', function () {
             $('nav').toggleClass('toggled');
+            $('.menu-btn').toggleClass("button-open");
         })
 
     });
