@@ -1,6 +1,6 @@
 const UNIVERSITY_SCIENCE_POSTION = {
-    lat: 10.762805,
-    lng: 106.682313
+    lat: 10.7627863,
+    lng: 106.6815868
 };
 
 export default module = {
