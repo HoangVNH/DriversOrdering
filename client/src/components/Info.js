@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import '../css/info_user/info.css';
 import { NavLink } from 'react-router-dom';
+import '../css/lightBox/lightbox.css';
+import '../js/lightbox-plus-jquery';
 
 class Info extends Component {
     render() {
@@ -15,13 +17,13 @@ class Info extends Component {
                     <div className="container">
                         <div className="row">
                             <div className="col-md-12 mt-5">
-                                <table class="table table-striped table-inverse">
+                                <table className="table table-striped table-inverse">
                                     <thead>
                                         <tr>
                                             <th>Họ Tên</th>
                                             <th>Số Điện Thoại</th>
                                             <th>Địa Chỉ</th>
-                                            <th>Thông Tin Xe</th>
+                                            <th className="text-center">Thông Tin Xe</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -29,7 +31,17 @@ class Info extends Component {
                                                 <td>Trần Phạm Hoàng Nam</td>
                                                 <td>0123 456 789</td>
                                                 <td>227 Nguyễn Văn Cừ, Q5</td>
-                                                <td></td>
+                                                <td className="text-center">
+                                                    <a style={{margin: '0 10px'}} className="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-1.jpg" data-lightbox="example-1">
+                                                        <img width={150} className="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-1.jpg" alt="anh22" />
+                                                    </a>
+                                                    <a style={{margin: '0 10px'}} className="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-1.jpg" data-lightbox="example-1">
+                                                        <img width="150" className="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-1.jpg" alt="anh22" />
+                                                    </a>
+                                                    <a style={{margin: '0 10px'}} className="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-1.jpg" data-lightbox="example-1">
+                                                        <img width="150" className="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-1.jpg" alt="anh22" />
+                                                    </a>
+                                                </td>
                                             </tr>
                                         </tbody>
                                 </table>
