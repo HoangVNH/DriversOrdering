@@ -33,13 +33,13 @@ class Info extends Component {
                                                 <td>227 Nguyễn Văn Cừ, Q5</td>
                                                 <td className="text-center">
                                                     <a style={{margin: '0 10px'}} className="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-1.jpg" data-lightbox="example-1">
-                                                        <img width={150} className="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-1.jpg" alt="anh22" />
+                                                        <img width={130} className="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-1.jpg" alt="anh22" />
                                                     </a>
                                                     <a style={{margin: '0 10px'}} className="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-1.jpg" data-lightbox="example-1">
-                                                        <img width="150" className="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-1.jpg" alt="anh22" />
+                                                        <img width={130} className="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-1.jpg" alt="anh22" />
                                                     </a>
                                                     <a style={{margin: '0 10px'}} className="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-1.jpg" data-lightbox="example-1">
-                                                        <img width="150" className="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-1.jpg" alt="anh22" />
+                                                        <img width={130} className="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-1.jpg" alt="anh22" />
                                                     </a>
                                                 </td>
                                             </tr>
