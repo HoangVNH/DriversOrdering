@@ -64,7 +64,7 @@ export default class Edit_Info extends Component {
                                     <img width={100} className="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-1.jpg" alt="anh22" />
                                 </a>
                                 <p>Chân dung</p>
-                                <button className="btn btn-success pull-right thay-doi">Thay đổi</button>
+                                <button className="btn btn-success pull-right thay-doi">Thay đổi <i className="fa fa-check"></i></button>
                                 <div className="form-group d-flex my-2">
                                     <input className="form-control" type="file" id="" placeholder="Nhập lại mật khẩu" />                                
                                 </div>
@@ -76,7 +76,7 @@ export default class Edit_Info extends Component {
                                     <img width={100} className="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-1.jpg" alt="anh22" />
                                 </a>
                                 <p>Biển số</p>
-                                <button className="btn btn-success pull-right thay-doi">Thay đổi</button>
+                                <button className="btn btn-success pull-right thay-doi">Thay đổi <i className="fa fa-check"></i></button>
                                 <div className="form-group d-flex my-2">
                                     <input className="form-control" type="file" id="" placeholder="Nhập lại mật khẩu" />                                
                                 </div>
@@ -87,7 +87,7 @@ export default class Edit_Info extends Component {
                                     <img width={100} className="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-1.jpg" alt="anh22" />
                                 </a>
                                 <p>Hình xe</p>
-                                <button className="btn btn-success pull-right thay-doi">Thay đổi</button>
+                                <button className="btn btn-success pull-right thay-doi">Thay đổi  <i className="fa fa-check"></i></button>
                                 <div className="form-group d-flex my-2">
                                     <input className="form-control" type="file" id="" placeholder="Nhập lại mật khẩu" />                                
                                 </div>
