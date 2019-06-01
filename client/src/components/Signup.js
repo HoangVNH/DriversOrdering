@@ -114,7 +114,7 @@ class Signup extends Component {
                                                 autoComplete="off" 
                                                 placeholder="Nhập Lại Mật Khẩu" 
                                                 name="txtRePassword"
-                                                value="txtRePassword"
+                                                value={txtRePassword}
                                             />
 
                                         </div>

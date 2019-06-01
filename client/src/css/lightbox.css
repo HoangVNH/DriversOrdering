@@ -1,0 +1,21 @@
+img {
+    cursor: pointer;
+  }
+  
+  .img-wrapper {
+    margin: 10px 0;
+    transition: left 1s linear;
+  }
+  
+  .img-wrapper .img-item {
+    overflow: hidden;
+  }
+  
+  .img-wrapper .img-item img{
+    transition: all ease-in 0.1s;
+  }
+  
+  .img-wrapper .img-item img:hover{
+    transform: scale(1.1);
+  }
+  
