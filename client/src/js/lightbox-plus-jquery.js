@@ -1,3 +1,6 @@
+/* eslint-disable no-mixed-operators */
+/* eslint-disable no-mixed-operators */
+/* eslint-disable no-mixed-operators */
 /*!
  * jQuery JavaScript Library v3.2.1
  * https://jquery.com/
@@ -11,9 +14,9 @@
  *
  * Date: 2017-03-20T18:59Z
  */
+
 ( function( global, factory ) {
 
-	"use strict";
 
 	if ( typeof module === "object" && typeof module.exports === "object" ) {
 
@@ -43,7 +46,7 @@
 // throw exceptions when non-strict code (e.g., ASP.NET 4.5) accesses strict mode
 // arguments.callee.caller (trac-13335). But as of jQuery 3.0 (2016), strict mode should be common
 // enough that all such attempts are guarded in a try block.
-"use strict";
+
 
 var arr = [];
 
@@ -532,8 +535,8 @@ function isArrayLike( obj ) {
 		return false;
 	}
 
-	return type === "array" || length === 0 ||
-		typeof length === "number" && length > 0 && ( length - 1 ) in obj;
+	// eslint-disable-next-line no-mixed-operators
+	return type === "array" || length === 0 || typeof length === "number" && length > 0 && ( length - 1 ) in obj;
 }
 var Sizzle =
 /*!
@@ -679,17 +682,20 @@ var i,
 		// NaN means non-codepoint
 		// Support: Firefox<24
 		// Workaround erroneous numeric interpretation of +"0x"
+		// eslint-disable-next-line no-self-compare
 		return high !== high || escapedWhitespace ?
 			escaped :
 			high < 0 ?
 				// BMP codepoint
 				String.fromCharCode( high + 0x10000 ) :
 				// Supplemental Plane codepoint (surrogate pair)
+				// eslint-disable-next-line no-mixed-operators
 				String.fromCharCode( high >> 10 | 0xD800, high & 0x3FF | 0xDC00 );
 	},
 
 	// CSS string/identifier serialization
 	// https://drafts.csswg.org/cssom/#common-serializing-idioms
+	// eslint-disable-next-line no-control-regex
 	rcssescape = /([\0-\x1f\x7f]|^-?\d)|^-$|[^\0-\x1f\x7f-\uFFFF\w-]/g,
 	fcssescape = function( ch, asCodePoint ) {
 		if ( asCodePoint ) {
@@ -2844,10 +2850,12 @@ function nodeName( elem, name ) {
   return elem.nodeName && elem.nodeName.toLowerCase() === name.toLowerCase();
 
 };
+// eslint-disable-next-line no-useless-escape
 var rsingleTag = ( /^<([a-z][^\/\0>:\x20\t\r\n\f]*)[\x20\t\r\n\f]*\/?>(?:<\/\1>|)$/i );
 
 
 
+// eslint-disable-next-line no-useless-escape
 var risSimple = /^.[^:#\[\.,]*$/;
 
 // Implement the identical functionality for filter and not
@@ -2907,6 +2915,7 @@ jQuery.fn.extend( {
 			self = this;
 
 		if ( typeof selector !== "string" ) {
+			// eslint-disable-next-line array-callback-return
 			return this.pushStack( jQuery( selector ).filter( function() {
 				for ( i = 0; i < len; i++ ) {
 					if ( jQuery.contains( self[ i ], this ) ) {
@@ -3078,6 +3087,7 @@ jQuery.fn.extend( {
 		var targets = jQuery( target, this ),
 			l = targets.length;
 
+		// eslint-disable-next-line array-callback-return
 		return this.filter( function() {
 			var i = 0;
 			for ( ; i < l; i++ ) {
@@ -4692,6 +4702,7 @@ jQuery.fn.extend( {
 } );
 var rcheckableType = ( /^(?:checkbox|radio)$/i );
 
+// eslint-disable-next-line no-useless-escape
 var rtagName = ( /<([a-z][^\/\0>\x20\t\r\n\f]+)/i );
 
 var rscriptType = ( /^$|\/(?:java|ecma)script/i );
@@ -5616,6 +5627,7 @@ var
 	/* eslint-disable max-len */
 
 	// See https://github.com/eslint/eslint/issues/3229
+	// eslint-disable-next-line no-useless-escape
 	rxhtmlTag = /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([a-z][^\/\0>\x20\t\r\n\f]*)[^>]*)\/>/gi,
 
 	/* eslint-enable */
@@ -6456,12 +6468,14 @@ jQuery.extend( {
 			}
 
 			// Make sure that null and NaN values aren't set (#7116)
+			// eslint-disable-next-line no-self-compare
 			if ( value == null || value !== value ) {
 				return;
 			}
 
 			// If a number was passed in, add the unit (except for certain CSS properties)
 			if ( type === "number" ) {
+				// eslint-disable-next-line no-mixed-operators
 				value += ret && ret[ 3 ] || ( jQuery.cssNumber[ origName ] ? "" : "px" );
 			}
 
@@ -6707,7 +6721,9 @@ Tween.propHooks = {
 
 			// Use a property on the element directly when it is not a DOM element,
 			// or when there is no matching style property that exists.
+			// eslint-disable-next-line no-mixed-operators
 			if ( tween.elem.nodeType !== 1 ||
+				// eslint-disable-next-line no-mixed-operators
 				tween.elem[ tween.prop ] != null && tween.elem.style[ tween.prop ] == null ) {
 				return tween.elem[ tween.prop ];
 			}
@@ -6880,6 +6896,7 @@ function defaultPrefilter( elem, props, opts ) {
 					continue;
 				}
 			}
+			// eslint-disable-next-line no-mixed-operators
 			orig[ prop ] = dataShow && dataShow[ prop ] || jQuery.style( elem, prop );
 		}
 	}
@@ -6918,6 +6935,7 @@ function defaultPrefilter( elem, props, opts ) {
 		}
 
 		// Animate inline elements as inline-block
+		// eslint-disable-next-line no-mixed-operators
 		if ( display === "inline" || display === "inline-block" && restoreDisplay != null ) {
 			if ( jQuery.css( elem, "float" ) === "none" ) {
 
@@ -7202,9 +7220,12 @@ jQuery.Animation = jQuery.extend( Animation, {
 
 jQuery.speed = function( speed, easing, fn ) {
 	var opt = speed && typeof speed === "object" ? jQuery.extend( {}, speed ) : {
+		// eslint-disable-next-line no-mixed-operators
 		complete: fn || !fn && easing ||
+			// eslint-disable-next-line no-mixed-operators
 			jQuery.isFunction( speed ) && speed,
 		duration: speed,
+		// eslint-disable-next-line no-mixed-operators
 		easing: fn && easing || easing && !jQuery.isFunction( easing ) && easing
 	};
 
@@ -7676,7 +7697,9 @@ jQuery.extend( {
 				}
 
 				if (
+					// eslint-disable-next-line no-mixed-operators
 					rfocusable.test( elem.nodeName ) ||
+					// eslint-disable-next-line no-mixed-operators
 					rclickable.test( elem.nodeName ) &&
 					elem.href
 				) {
@@ -7757,6 +7780,7 @@ jQuery.each( [
 
 
 function getClass( elem ) {
+	// eslint-disable-next-line no-mixed-operators
 	return elem.getAttribute && elem.getAttribute( "class" ) || "";
 }
 
@@ -8587,6 +8611,7 @@ function inspectPrefiltersOrTransports( structure, options, originalOptions, jqX
 		return selected;
 	}
 
+	// eslint-disable-next-line no-mixed-operators
 	return inspect( options.dataTypes[ 0 ] ) || !inspected[ "*" ] && inspect( "*" );
 }
 
@@ -9024,6 +9049,7 @@ jQuery.extend( {
 
 				// Support: IE <=8 - 11 only
 				// Anchor's host property isn't correctly set when s.url is relative
+				// eslint-disable-next-line no-self-assign
 				urlAnchor.href = urlAnchor.href;
 				s.crossDomain = originAnchor.protocol + "//" + originAnchor.host !==
 					urlAnchor.protocol + "//" + urlAnchor.host;
@@ -9108,6 +9134,7 @@ jQuery.extend( {
 		}
 
 		// Set the correct header, if data is being sent
+		// eslint-disable-next-line no-mixed-operators
 		if ( s.data && s.hasContent && s.contentType !== false || options.contentType ) {
 			jqXHR.setRequestHeader( "Content-Type", s.contentType );
 		}
@@ -9211,6 +9238,7 @@ jQuery.extend( {
 			jqXHR.readyState = status > 0 ? 4 : 0;
 
 			// Determine if successful
+			// eslint-disable-next-line no-mixed-operators
 			isSuccess = status >= 200 && status < 300 || status === 304;
 
 			// Get response data
@@ -9446,6 +9474,7 @@ jQuery.ajaxTransport( function( options ) {
 	var callback, errorCallback;
 
 	// Cross domain only allowed if supported through XMLHttpRequest
+	// eslint-disable-next-line no-mixed-operators
 	if ( support.cors || xhrSupported && !options.crossDomain ) {
 		return {
 			send: function( headers, complete ) {
@@ -9563,6 +9592,7 @@ jQuery.ajaxTransport( function( options ) {
 				try {
 
 					// Do send the request (this may raise an exception)
+					// eslint-disable-next-line no-mixed-operators
 					xhr.send( options.hasContent && options.data || null );
 				} catch ( e ) {
 
@@ -10520,7 +10550,6 @@ return jQuery;
     // When image to show is preloaded, we send the width and height to sizeContainer()
     var preloader = new Image();
     preloader.onload = function() {
-      var $preloader;
       var imageHeight;
       var imageWidth;
       var maxImageHeight;
@@ -10533,7 +10562,6 @@ return jQuery;
         'src': filename
       });
 
-      $preloader = $(preloader);
 
       $image.width(preloader.width);
       $image.height(preloader.height);

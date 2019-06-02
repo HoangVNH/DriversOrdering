@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+
 class Signup extends Component {
 
     constructor(props) {
@@ -121,8 +122,11 @@ class Signup extends Component {
 
                                         <div className="field-wrap">
 
-                                            <input type="file" required multiple/>
-                                            <span>Vui lòng chọn 3 ảnh</span>
+                                            <label htmlFor="file" className="file_label">
+                                                <i className="fa fa-upload" aria-hidden="true"></i>
+                                                Tải lên 3 ảnh của bạn
+                                            </label>
+                                            <input id="file" type="file" name="file" multiple />
 
                                         </div>
 

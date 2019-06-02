@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 
 import '../css/login_register/login_register.css';
 import '../js/login';
-
-
+import '../js/file-input';
 
 import Signup from './Signup';
 import Login from './Login';
