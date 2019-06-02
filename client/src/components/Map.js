@@ -5,6 +5,7 @@ import {
   withScriptjs,
   withGoogleMap,
   GoogleMap,
+  Marker
 } from "react-google-maps";
 import { compose, withProps } from "recompose";
 
@@ -15,23 +16,17 @@ const MyMapComponent = compose(
     googleMapURL: GLOBAL.SERVER_HOST + API_URL.MAP,
     loadingElement: (
       <div
-        style={{
-          height: `100%`
-        }}
+        style={{  height: `100%`  }}
       />
     ),
     containerElement: (
       <div
-        style={{
-          height: `100%`
-        }}
+        style={{  height: `100%`  }}
       />
     ),
     mapElement: (
       <div
-        style={{
-          height: `100%`
-        }}
+        style={{  height: `100%`  }}
       />
     )
   }),
@@ -46,6 +41,7 @@ const MyMapComponent = compose(
       fullscreenControl: false,
       scaleControl: false,
       rotateControl: false,
+      zoomControl: false,
       styles: [
           {
             featureType: 'poi.business',
@@ -58,11 +54,11 @@ const MyMapComponent = compose(
           }
         ]
     }}
-    defaultCenter={{
-      lat: GLOBAL.LATLNG.lat,
-      lng: GLOBAL.LATLNG.lng
-    }}
-  />
+    defaultCenter={{  lat: GLOBAL.LATLNG.lat, lng: GLOBAL.LATLNG.lng}}>
+    <Marker 
+      position= {{  lat: GLOBAL.LATLNG.lat, lng: GLOBAL.LATLNG.lng  }}
+    />
+  </GoogleMap>
 ));
 
 export default class Map extends PureComponent {
