@@ -38,7 +38,7 @@ export default class Edit_Info extends Component {
                                     <input id="file" type="file" name="file" />
                                 </div>
 
-                                <button className="btn btn-danger btn-block">Thay đổi <i className="fa fa-check"></i></button>
+                                <button className="btn btn-warning btn-block">Thay đổi <i className="fa fa-check"></i></button>
                             </form>
                         </div>
                     </div>
@@ -58,7 +58,7 @@ export default class Edit_Info extends Component {
                                     <input id="file" type="file" name="file" />
                                 </div>
 
-                                <button className="btn btn-danger btn-block">Thay đổi <i className="fa fa-check"></i></button>
+                                <button className="btn btn-warning btn-block">Thay đổi <i className="fa fa-check"></i></button>
                             </form>
                         </div>
                     </div>
@@ -78,7 +78,7 @@ export default class Edit_Info extends Component {
                                     <input id="file" type="file" name="file" />
                                 </div>
 
-                                <button className="btn btn-danger btn-block">Thay đổi <i className="fa fa-check"></i></button>
+                                <button className="btn btn-warning btn-block">Thay đổi <i className="fa fa-check"></i></button>
                             </form>
                         </div>
                     </div>
@@ -107,7 +107,7 @@ export default class Edit_Info extends Component {
                                 <input className="form-control" type="password" placeholder="Nhập lại mật khẩu" />
                             </div>                            
 
-                            <button className="btn btn-success pull-right" id="submit">
+                            <button className="btn btn-danger pull-right" id="submit">
                                 Lưu Thông Tin <i className="fa fa-check"></i>
                             </button>
 

@@ -8,6 +8,7 @@ import Forget_pass from '../components/Forget_pass';
 import NotFound from '../components/NotFound';
 import About from '../components/About';
 import Info from '../components/Info';
+import ListDriver from '../components/admin/ListDriver';
 
 class Urls extends Component {
     render() {
@@ -19,6 +20,7 @@ class Urls extends Component {
                     <Route path="/login/forget_pass" exact component={Forget_pass} />
                     <Route path="/about" exact component={About} />
                     <Route path="/info" exact component={Info} />
+                    <Route path="/admin/list_driver" exact component={ListDriver} />
                     <Route component={NotFound} />
                 </Switch>
         );
