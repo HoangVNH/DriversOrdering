@@ -1,8 +1,8 @@
 const account = require('../database/DB_account');
 const q = require("q"); // khai báo promise
 
-// Get Accounts
-function getAccount(callback, limit) {
+// ! Get Accounts === XONG
+function getAccount() {
     var defer = q.defer();
 
     account.find({}, function (err, dulieu) {
@@ -17,7 +17,7 @@ function getAccount(callback, limit) {
     return defer.promise;
 }
 
-// Get Account
+// ! Get Account === XONG
 function getAccountById(id) {
     var defer = q.defer();
 
@@ -35,17 +35,23 @@ function getAccountById(id) {
     return defer.promise;
 }
 
-// Add Account
-function addAccount(title, content, author, created_at, updated_at) {
+// ! Add Account  === CHƯA XONG
+function addAccount(name, phone, address, password) {
     var defer = q.defer();
 
     account.insertMany({
 
-        title: title,
-        content: content,
-        author: author,
-        created_at: created_at,
-        updated_at: updated_at
+        userName: phone,
+        password: password,
+        permission:{
+            name: name,
+            mobileNum: phone,
+            address: address,
+            motoImage: "hình 1",
+            licenseImage: "Hình 2",
+            avatar: "hình 3"
+        },
+        active: false
 
     }, function (err, dulieu) {
         if (err) {
@@ -58,18 +64,18 @@ function addAccount(title, content, author, created_at, updated_at) {
     return defer.promise;
 }
 
-// Update Account
-function updateAccount(id, title, content, author, updated_at) {
+// ! Update Account === CHƯA XONG
+function updateAccount(id, name, phone, address, password) {
     var defer = q.defer();
 
     account.findByIdAndUpdate({
         _id: id
     }, {
         $set: {
-            title: title,
-            content: content,
-            author: author,
-            updated_at: updated_at
+            name: name,
+            phone: phone,
+            address: address,
+            password: password
         }
     }, function (err, dulieu) {
         if (err) {
@@ -83,25 +89,6 @@ function updateAccount(id, title, content, author, updated_at) {
     return defer.promise;
 }
 
-// ! ===============================================
-// Add Account
-function addAccount(account, callback) {
-    Account.create(account, callback);
-}
-
-// Update Account
-function updateAccount(id, account, option, callback) {
-    var query = {
-        _id: id
-    };
-    var update = {
-        password = account.password,
-        permission = account.permission,
-        active = account.active
-    }
-    Account.findOneAndUpdate(query, update, option, callback);
-}
-// ! ===============================================
 
 module.exports = {
     getAccount: getAccount,

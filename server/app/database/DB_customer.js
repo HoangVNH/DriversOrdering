@@ -6,6 +6,6 @@ var customerSchema = mongoose.Schema({
         type: String,
         require: true
     }
-});
+}, { collection: "customer" });
 
 module.exports = mongoose.model('customerSchema', customerSchema);

@@ -14,6 +14,6 @@ var orderSchema = mongoose.Schema({
         type: Boolean,
         default: false
     }
-});
+}, { collection: "order" });
 
 module.exports = mongoose.model('orderSchema', orderSchema);

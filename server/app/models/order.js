@@ -1,7 +1,7 @@
 const order = require('../database/DB_oder');
 const q = require("q"); // khai báo promise
 
-// Get Orders
+// ! Get Orders === CHƯA XONG
 function getOrder() {
     var defer = q.defer();
 
@@ -17,7 +17,7 @@ function getOrder() {
     return defer.promise;
 }
 
-// Get Order
+// ! Get Order === CHƯA XONG
 function getOrderById(id) {
     var defer = q.defer();
 
@@ -35,7 +35,7 @@ function getOrderById(id) {
     return defer.promise;
 }
 
-// Add Order
+// ! Add Order === CHƯA XONG
 function addOrder(idDriver, customerMobileNum, status) {
     var defer = q.defer();
 
@@ -56,7 +56,7 @@ function addOrder(idDriver, customerMobileNum, status) {
     return defer.promise;
 }
 
-// Update Order
+// ! Update Order === CHƯA XONG
 function updateOrder(id, idDriver, customerMobileNum, status) {
     var defer = q.defer();
 

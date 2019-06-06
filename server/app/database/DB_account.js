@@ -22,6 +22,6 @@ var accountSchema = mongoose.Schema({
         type: Boolean,
         default: false
     }
-});
+}, { collection: "account" });
 
 module.exports = mongoose.model('accountSchema', accountSchema);

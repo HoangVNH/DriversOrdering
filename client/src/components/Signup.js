@@ -25,7 +25,7 @@ class Signup extends Component {
         });
     }
 
-    addUser = (Name, PhoneNum, Address, Password) => {
+    addUser = (Name, PhoneNum, Address, Password, RePassword) => {
         
         var item = {};
 
@@ -33,6 +33,7 @@ class Signup extends Component {
         item.PhoneNum = PhoneNum;
         item.Address = Address;
         item.Password = Password;
+        item.RePassword = RePassword;
 
         this.props.addUserStore(item);
     }
@@ -57,7 +58,7 @@ class Signup extends Component {
 
                                 <div id="signup">   
                                     <h3>Đăng Ký</h3>
-                                    <form action="" method="post" encType="multipart/form-data">
+                                    <form encType="multipart/form-data">
 
                                         <div className="top-row">
                                             <div className="field-wrap">
@@ -138,7 +139,7 @@ class Signup extends Component {
 
                                         <button 
                                             type="submit" 
-                                            onClick={(Name, PhoneNum, Address, Password) => this.addUser(this.state.Name, this.state.PhoneNum, this.state.Address, this.state.Password)} 
+                                            onClick={(Name, PhoneNum, Address, Password, RePassword) => this.addUser(this.state.Name, this.state.PhoneNum, this.state.Address, this.state.Password, this.state.RePassword)} 
                                             className="button button-block">Đăng Ký</button>
                                     </form>
                                 </div>

@@ -1,3 +1,4 @@
+// ! PHẦN MÃ HÓA PASSWORD
 const bcrypt = require('bcrypt');
 
 function hash_password(password) { // mã hóa password

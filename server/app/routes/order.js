@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
-const Order = require('../database/DB_oder');
+const Order = require('../models/order');
 
 
 // Query Order
-router.get('/api/orders', function (req, res) {
+router.get('/api', function (req, res) {
     Order.getOrder(function (err, orders) {
         if (err) {
             throw err;

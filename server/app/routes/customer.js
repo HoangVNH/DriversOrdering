@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
-const Customer = require('../database/DB_customer');
+const Customer = require('../models/custormer');
 
 
-// Query Customer
+// TODO: Query Customer
 router.get('/api/customers', function (req, res) {
     Customer.getCustomer(function (err, customers) {
         if (err) {

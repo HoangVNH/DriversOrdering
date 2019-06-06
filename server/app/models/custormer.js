@@ -1,7 +1,7 @@
 const customer = require('../database/DB_customer');
 const q = require("q"); // khai báo promise
 
-// Get Customers
+// ! Get Customers === CHƯA XONG
 function getCustomer() {
     var defer = q.defer();
 
@@ -17,7 +17,7 @@ function getCustomer() {
     return defer.promise;
 }
 
-// Get Customer
+// ! Get Customer === CHƯA XONG
 function getCustomerById(id) {
     var defer = q.defer();
 
@@ -35,7 +35,7 @@ function getCustomerById(id) {
     return defer.promise;
 }
 
-// Add Customer
+// ! Add Customer === CHƯA XONG
 function addCustomer(phoneNum) {
     var defer = q.defer();
 
