@@ -4,120 +4,41 @@ const mongoose = require('mongoose');
 
 var app = express();
 
+const PORT = process.env.PORT || 3000;
+
+// cấu hình bodyParser cho form
 app.use(bodyParser.json());
+app.use(express.urlencoded({
+    extended: false
+}));
 
 
-var Customer = require('./models/customer');
-var Account = require('./models/account');
-var Order = require('./models/order');
+// cấu hình cho views EJS
+app.set("views", __dirname + "/app/views");
+app.set("view engine", "ejs");
 
- 
-port = 3000;
-url = 'mongodb://localhost/dodb';
 
-// Connect to Mongoose
-mongoose.connect(url, {useNewUrlParser: true});
+// cấu hình static folder public
+app.use("/static", express.static(__dirname + "/public"));
 
-var db = mongoose.connection;
 
-app.get('/', function(req, res){
-    res.send('Please use /api/customer');
+// cấu hình để gọi cho router
+var routes = require(__dirname + '/app/routes');
+app.use(routes);
+
+
+// cấu hình database
+mongoose.connect('mongodb://localhost:27017/mapDB', {
+    useNewUrlParser: true
+}).then(() => {
+    console.log(`Đã kết nối DB ${config.get("mongoDB.database")}`);
+}).catch((err) => {
+    console.log(`Không kết nối được tới DB`);
 });
+mongoose.set('useFindAndModify', false);
 
 
-// Query Customer
-app.get('/api/customers', function(req, res){
-    Customer.getCustomer(function(err, customers){
-        if(err){
-            throw err;
-        }
-        res.json(customers);
-    });
-});
-
-app.get('/api/customer/:_id', function(req, res){
-    Customer.getCustomerById(req.params._id, function(err, customer){
-        if(err){
-            throw err;
-        }
-        res.json(customer);
-    });
-});
-
-app.post('/api/customer', function(req, res){
-    var customer = req.body;
-    Customer.addCustomer(customer, function(err, customer){
-        if(err){
-            throw err;
-        }
-        res.json(customer);
-    });
-});
-
-
-// Query Account
-app.get('/api/accounts', function(req, res){
-    Account.getAccount(function(err, accounts){
-        if(err){
-            throw err;
-        }
-        res.json(accounts);
-    });
-});
-
-app.get('/api/account/:_id', function(req, res){
-    Account.getAccountById(req.params._id, function(err, account){
-        if(err){
-            throw err;
-        }
-        res.json(account);
-    });
-});
-
-app.put('/api/account/:_id', function(req, res){
-    var id = req.params._id;
-    var account = req.body;
-    Account.updateAccount(id, account, {}, function(err, account){
-        if(err){
-            throw err;
-        }
-        res.json(customer);
-    });
-});
-
-
-// Query Order
-app.get('/api/orders', function(req, res){
-    Order.getOrder(function(err, orders){
-        if(err){
-            throw err;
-        }
-        res.json(orders);
-    });
-});
-
-app.get('/api/order/:_id', function(req, res){
-    Order.getOrder(req.params._id, function(err, order){
-        if(err){
-            throw err;
-        }
-        res.json(order);
-    });
-});
-
-app.put('/api/order/:_id', function(req, res){
-    var id = req.params._id;
-    var order = req.body;
-    Order.updateOrder(id, order, {}, function(err, order){
-        if(err){
-            throw err;
-        }
-        res.json(order);
-    });
-});
-
-
-
-app.listen(port);
-
-console.log(`Server started on port ${port}...`);
+// chạy server
+app.listen(PORT, function () {
+    console.log("server is running on port " + PORT);
+})

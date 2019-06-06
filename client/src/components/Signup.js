@@ -1,41 +1,43 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
+import { connect } from 'react-redux';
+
+
 class Signup extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            txtName: '',
-            txtPhoneNum: '',
-            txtAddress: '',
-            txtPassword: '',
-            txtRePassword: ''
+            Name: '',
+            PhoneNum: '',
+            Address: '',
+            Password: '',
+            RePassword: ''
         }
     }
 
-    onHandleChange = (e) => {
-        var target = e.target;
-        var name = target.name;
-        var value = target.value;
+    onHandleChange = (event) => {
+        var name = event.target.name;
+        var value = event.target.value;
         this.setState({
             [name] : value
         });
     }
 
-    onHandleSubmit = (e) => {
-        e.preventDefault();
-        console.log(this.state.txtName);
-        console.log(this.state.txtPhoneNum);
-        console.log(this.state.txtAddress);
-        console.log(this.state.txtPassword);
-        console.log(this.state.txtRePassword);
+    addUser = (Name, PhoneNum, Address, Password) => {
+        
+        var item = {};
+
+        item.Name = Name;
+        item.PhoneNum = PhoneNum;
+        item.Address = Address;
+        item.Password = Password;
+
+        this.props.addUserStore(item);
     }
 
-
     render() {
-
-        var { txtName, txtPhoneNum, txtAddress, txtPassword, txtRePassword } = this.state;
 
         return (
 
@@ -55,67 +57,71 @@ class Signup extends Component {
 
                                 <div id="signup">   
                                     <h3>Đăng Ký</h3>
-                                    <form action="/" method="post" encType="multipart/form-data">
+                                    <form action="" method="post" encType="multipart/form-data">
 
                                         <div className="top-row">
                                             <div className="field-wrap">
-                                                <input 
+                                                <input
+                                                    onChange={(event) => {this.onHandleChange(event)}}
                                                     type="text" 
                                                     required 
                                                     autoComplete="off" 
                                                     placeholder="Họ Tên" 
-                                                    name="txtName"
-                                                    value={txtName}
+                                                    name="Name"
+                                                    
                                                 />
                                             </div>
                                             <div className="field-wrap">
                                                 <input 
+                                                    onChange={(event) => {this.onHandleChange(event)}}
                                                     type="tel" 
                                                     required 
                                                     autoComplete="off"
                                                     pattern="[0-9]{10}"
                                                     placeholder="Số Điện Thoại" 
-                                                    name="txtPhoneNum"
-                                                    value={txtPhoneNum}
+                                                    name="PhoneNum"
+                                                    
                                                 />
                                             </div>
                                         </div>
 
                                         <div className="field-wrap">
 
-                                            <input 
+                                            <input
+                                                onChange={(event) => {this.onHandleChange(event)}}
                                                 type="text" 
                                                 required 
                                                 autoComplete="off" 
                                                 placeholder="Địa Chỉ" 
-                                                name="txtAddress"
-                                                value={txtAddress}
+                                                name="Address"
+                                                
                                             />
 
                                         </div>
 
                                         <div className="field-wrap">
 
-                                            <input 
+                                            <input
+                                                onChange={(event) => {this.onHandleChange(event)}}
                                                 type="password" 
                                                 required 
                                                 autoComplete="off" 
                                                 placeholder="Nhập Mật Khẩu" 
-                                                name="txtPassword"
-                                                value={txtPassword}
+                                                name="Password"
+                                                
                                             />
 
                                         </div>
 
                                         <div className="field-wrap">
 
-                                            <input 
+                                            <input
+                                                onChange={(event) => {this.onHandleChange(event)}}
                                                 type="password" 
                                                 required 
                                                 autoComplete="off" 
                                                 placeholder="Nhập Lại Mật Khẩu" 
-                                                name="txtRePassword"
-                                                value={txtRePassword}
+                                                name="RePassword"
                                             />
 
                                         </div>
@@ -130,7 +136,10 @@ class Signup extends Component {
 
                                         </div>
 
-                                        <button type="submit" className="button button-block">Đăng Ký</button>
+                                        <button 
+                                            type="submit" 
+                                            onClick={(Name, PhoneNum, Address, Password) => this.addUser(this.state.Name, this.state.PhoneNum, this.state.Address, this.state.Password)} 
+                                            className="button button-block">Đăng Ký</button>
                                     </form>
                                 </div>
 
@@ -145,4 +154,18 @@ class Signup extends Component {
     }
 }
 
-export default Signup;
+const mapStateToProps = (state, ownProps) => {
+    return {
+
+    }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        addUserStore: (getItem) => {
+            dispatch({ type: "ADD_USER", getItem })
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);
