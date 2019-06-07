@@ -1,3 +1,5 @@
+/* eslint-disable no-native-reassign */
+/* eslint-disable no-unused-vars */
 import { default as GLOBAL } from '../components/Constants';
 
 const API_URL = {
@@ -6,5 +8,5 @@ const API_URL = {
 }
 
 export default module = {
-    MAP: API_URL.MAP,    
+    MAP: API_URL.MAP,
 }

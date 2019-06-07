@@ -1,6 +1,7 @@
+/* eslint-disable no-native-reassign */
 const UNIVERSITY_SCIENCE_POSITION = {
-    lat: 10.7627863,
-    lng: 106.6815868
+    lat: 10.762696,
+    lng: 106.682093
 };
 
 export default module = {

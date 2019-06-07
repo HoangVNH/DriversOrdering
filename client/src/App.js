@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 
 import './css/nav_header/nav.css';
 import './js/nav';
@@ -10,7 +10,7 @@ import Header from './components/Header';
 
 import { BrowserRouter as Router } from "react-router-dom";
 
-export default class App extends PureComponent {
+export default class App extends Component {
   render() {
     return (
       <Router>
