@@ -1,6 +1,35 @@
 import React, { Component } from 'react';
 
+import axios  from 'axios';
+
+const getListDrive = () =>  axios.get('/account/api').then((res) => res.data);
+const activeDrive = (active) => axios.post('/account/api/active', {active}).then((res) => res.data);
+
 class ListDriver extends Component {
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            datas: null,
+            Name: "",
+            Phone: "",
+            Address: "",
+            Password: "",
+            MotoImage: "",
+            LicenseImage: "",
+            Avatar: "",
+            Active: ""
+        }
+    }
+    
+    // ! lấy dữ liệu xuống trước khi render
+    componentWillMount() {
+        if(this.state.datas === null){
+            getListDrive().then((res) => { this.setState({ datas: res })})
+        }
+    }
+    
+
     render() {
         return (
             <div>

@@ -21,19 +21,19 @@ a:hover {
           box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
 }
 
-.tab-group {
+.form .tab-group {
   list-style: none;
   padding: 0;
   margin: 0 0 40px 0;
 }
 
-.tab-group:after {
+.form .tab-group:after {
   content: "";
   display: table;
   clear: both;
 }
 
-.tab-group li a {
+.form .tab-group li a {
   display: block;
   text-decoration: none;
   padding: 15px;
@@ -48,25 +48,24 @@ a:hover {
   transition: 0.5s ease;
 }
 
-.tab-group li a:hover {
+.form .tab-group li a:hover {
   background: #179b77;
   color: #ffffff;
 }
 
-.tab-group .active a {
+.form .tab-group .active a {
   background: #1ab188;
   color: #ffffff;
 }
 
-h3 {
+.form .tab-content #signup h3, .form .tab-content #login h3 {
   text-align: center;
   color: #ffffff;
   font-weight: 300;
   margin: 0 0 40px;
 }
 
-input,
-textarea {
+.form .tab-content #signup input, .form .tab-content #login input {
   font-size: 22px;
   display: block;
   width: 100%;
@@ -83,15 +82,40 @@ textarea {
   transition: border-color 0.25s ease, box-shadow 0.25s ease, -webkit-box-shadow 0.25s ease;
 }
 
-input:focus,
-textarea:focus {
+.form .tab-content #signup input:focus, .form .tab-content #login input:focus {
   outline: 0;
   border-color: #1ab188;
 }
 
-textarea {
-  border: 2px solid #a0b3b0;
-  resize: vertical;
+.form .tab-content #signup #file {
+  display: none;
+}
+
+.form .tab-content #signup .file_label {
+  display: block;
+  font-size: 20px;
+  font-family: Arial;
+  width: 100%;
+  height: 40px;
+  line-height: 30px;
+  background-color: #1ab188;
+  color: #FFF;
+  text-align: center;
+  padding: 5px;
+  border: 1px solid #CCC;
+  border-radius: 5px;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  margin-bottom: 0 !important;
+}
+
+.form .tab-content #signup .file_label:hover {
+  background-color: #179b77;
+  color: #ffffff;
+}
+
+.form .tab-content #signup .fa {
+  margin-right: 5px;
 }
 
 .field-wrap {
@@ -151,36 +175,5 @@ textarea {
 
 .forgot a {
   text-decoration: none;
-}
-
-#file {
-  display: none;
-}
-
-.file_label {
-  display: block;
-  font-size: 20px;
-  font-family: Arial;
-  width: 100%;
-  height: 40px;
-  line-height: 30px;
-  background-color: #1ab188;
-  color: #FFF;
-  text-align: center;
-  padding: 5px;
-  border: 1px solid #CCC;
-  border-radius: 5px;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-  margin-bottom: 0 !important;
-}
-
-.file_label:hover {
-  background-color: #179b77;
-  color: #ffffff;
-}
-
-.fa {
-  margin-right: 5px;
 }
 /*# sourceMappingURL=login_register.css.map */
