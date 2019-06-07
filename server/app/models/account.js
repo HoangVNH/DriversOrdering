@@ -18,24 +18,25 @@ function getAccount() {
 }
 
 // ! Get Account === XONG
-function getAccountById(id) {
-    var defer = q.defer();
+function getAccountByPhone(phone) {
+    if(phone){
+        var defer = q.defer();
+        account.findOne({ userName: phone }, function (err, dulieu) {
+            if (err) {
+                defer.reject(err);
 
-    account.findById({
-        _id: id
-    }, function (err, dulieu) {
-        if (err) {
-            defer.reject(err);
+            } else {
 
-        } else {
-
-            defer.resolve(dulieu);
-        }
-    })
-    return defer.promise;
+                defer.resolve(dulieu);
+            }
+        })
+        return defer.promise;
+    } else {
+        return false;
+    }
 }
 
-// ! Add Account  === CHƯA XONG
+// ! Add Account  === XONG
 function addAccount(name, phone, address, password) {
     var defer = q.defer();
 
@@ -92,7 +93,7 @@ function updateAccount(id, name, phone, address, password) {
 
 module.exports = {
     getAccount: getAccount,
-    getAccountById: getAccountById,
+    getAccountByPhone: getAccountByPhone,
     addAccount: addAccount,
     updateAccount: updateAccount
 }

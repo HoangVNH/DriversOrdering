@@ -1,17 +1,16 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-//const cors = require('cors');
+const dotenv = require("dotenv");
 
 var app = express();
 
+dotenv.config();
 const PORT = process.env.PORT || 5000;
 
 // cấu hình bodyParser cho form
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
-//app.use(cors());
 
 
 // cấu hình cho views EJS
@@ -29,7 +28,7 @@ app.use(routes);
 
 
 // cấu hình database
-mongoose.connect('mongodb://localhost:27017/XeOmm', {
+mongoose.connect(process.env.DB_CONNECT, {
     useNewUrlParser: true
 }).then(() => {
     console.log(`Đã kết nối DB`);
