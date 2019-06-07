@@ -49,24 +49,24 @@ router.post("/api/signup", function (req, res) {
     
     var user = req.body;
 
-    // không điền email
-    if(user.Name.trim() == 0)
-    {
-        res.send("Bạn chưa nhập tên");
-    }
-    // không điền email
-    if(user.Address.trim() == 0)
-    {
-        res.send("Bạn chưa nhập tên");
-    }
-    res.send(user.Name);
-    // không trùng password
-    if(user.Password != user.RePassword && user.password.trim().length != 0)
-    {
-        res.send("Mật khẩu không trùng nhau");
-    }
+    // // không điền email
+    // if(user.Name.trim() == 0)
+    // {
+    //     res.send("Bạn chưa nhập tên");
+    // }
+    // // không điền email
+    // if(user.Address.trim() == 0)
+    // {
+    //     res.send("Bạn chưa nhập tên");
+    // }
+    // res.send(user.Name);
+    // // không trùng password
+    // if(user.Password != user.RePassword && user.password.trim().length != 0)
+    // {
+    //     res.send("Mật khẩu không trùng nhau");
+    // }
     // mã hóa password
-    var password = helper.hash_password(user.password);
+    var password = helper.hash_password(user.Password);
 
     // insert vào DB
     const Result = Account.addAccount(user.Name, user.PhoneNum, user.Address, password);

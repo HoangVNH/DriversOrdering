@@ -25,8 +25,11 @@ class Signup extends Component {
         });
     }
 
-    addUser = (Name, PhoneNum, Address, Password, RePassword) => {
-        
+    preventDefault = (event) => {
+        event.preventDefault();
+    }
+
+    addUser = (Name, PhoneNum, Address, Password, RePassword) => {     
         var item = {};
 
         item.Name = Name;
@@ -58,7 +61,8 @@ class Signup extends Component {
 
                                 <div id="signup">   
                                     <h3>Đăng Ký</h3>
-                                    <form encType="multipart/form-data">
+
+                                    <form action="" method="POST" encType="multipart/form-data">
 
                                         <div className="top-row">
                                             <div className="field-wrap">
@@ -67,7 +71,7 @@ class Signup extends Component {
                                                     type="text" 
                                                     required 
                                                     autoComplete="off" 
-                                                    placeholder="Họ Tên" 
+                                                    placeholder="Họ Tên"
                                                     name="Name"
                                                     
                                                 />
