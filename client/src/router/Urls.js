@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import Map from '../components/Map';
+import Map1 from '../components/Map1';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
 import Forget_pass from '../components/Forget_pass';
@@ -14,7 +15,7 @@ class Urls extends Component {
     render() {
         return (
             <Switch>
-                <Route path="/" exact component={Map} />
+                <Route path="/" exact component={Map1} />
                 <Route path="/login" exact component={Login} />
                 <Route path="/signup" exact component={Signup} />
                 <Route path="/login/forget_pass" exact component={Forget_pass} />

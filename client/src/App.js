@@ -7,6 +7,8 @@ import Urls from './router/Urls';
 
 import Nav from './components/Nav';
 import Header from './components/Header';
+import 'leaflet/dist/leaflet.js';
+import 'leaflet/dist/leaflet.css';
 
 import { BrowserRouter as Router } from "react-router-dom";
 

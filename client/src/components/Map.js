@@ -7,7 +7,7 @@ export default class Map extends Component {
 
 	render() {
 		return (
-      <div style={{ margin: `100px` }}>
+      <div>
         <AsyncMap
           google={this.props.google}
           center={{ lat: GLOBAL.LATLNG.lat, lng: GLOBAL.LATLNG.lng }}
