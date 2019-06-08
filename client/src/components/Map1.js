@@ -11,7 +11,7 @@ export default class Map1 extends Component {
 		const position = [GLOBAL.LATLNG.lat, GLOBAL.LATLNG.lng];
 		return (
 			<main>
-				<Map className="myMap" center={position} zoom={18} zoomControl={false} style={{height: '100%'}}>
+				<Map className="myMap" center={position} zoom={18} zoomControl={false} style={{height: "100%"}}>
 					<TileLayer
 						url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 						attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
