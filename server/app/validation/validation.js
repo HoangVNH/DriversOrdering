@@ -6,7 +6,7 @@ const register_Valida = (data) => {
 
     const schema = Joi.object().keys({
         Name: Joi.string().min(6).required(),
-        PhoneNum: Joi.string().regex(/((09|03|07|08|05)+([0-9]{8})\b)/),
+        PhoneNum: Joi.string().regex(/((09|01|03|07|08|05)+([0-9]{8})\b)/),
         Address: Joi.string().min(6).required(),
         Password: Joi.string().min(8).required(),
         RePassword: Joi.string().min(8).required()
@@ -19,7 +19,7 @@ const register_Valida = (data) => {
 const login_Valida = (data) => {
 
     const schema = Joi.object().keys({
-        PhoneNum: Joi.string().regex(/((09|03|07|08|05)+([0-9]{8})\b)/),
+        PhoneNum: Joi.string().regex(/((09|01|03|07|08|05)+([0-9]{8})\b)/),
         Password: Joi.string().min(8).required()
     })
 
