@@ -87,8 +87,8 @@
   color: #179b77;
 }
 
-.form .tab-content #signup p {
-  color: red;
+.form .tab-content #signup p, .form .tab-content #login p {
+  color: #1ab188;
   text-align: center;
 }
 

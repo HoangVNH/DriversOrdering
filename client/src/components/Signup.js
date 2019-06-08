@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import axios  from 'axios';
-import { connect } from 'react-redux';
 
 const addDriver = (Name, PhoneNum, Address, Password, RePassword) =>  axios.post('/account/api/signup', {Name, PhoneNum, Address, Password, RePassword}).then((res) => res.data ).catch(error => console.log(error));
 
@@ -139,7 +138,7 @@ class Signup extends Component {
 
                                         </div>
 
-                                        <div className="field-wrap">
+                                        {/* <div className="field-wrap">
 
                                             <label htmlFor="file" className="file_label">
                                                 <i className="fa fa-upload" aria-hidden="true"></i>
@@ -147,7 +146,7 @@ class Signup extends Component {
                                             </label>
                                             <input id="file" type="file" name="file" multiple />
 
-                                        </div>
+                                        </div> */}
 
                                         <p> {this.ThongBaoLoi()} </p>
 
@@ -167,16 +166,5 @@ class Signup extends Component {
     }
 }
 
-const mapStateToProps = (state, ownProps) => {
-    return {
-        
-    }
-}
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-    return {
-        
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Signup);
+export default Signup;
