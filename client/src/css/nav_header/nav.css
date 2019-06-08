@@ -10,10 +10,6 @@ body {
   padding: 0;
 }
 
-.myMap {
-  height: 850px;
-}
-
 html .root,
 body .root {
   width: 100%;
@@ -162,6 +158,11 @@ ul a li:hover i {
 
 .header .header-user .dang-xuat a {
   text-decoration: none;
+  color: #1ab188 !important;
+}
+
+.header .header-user .dang-xuat a:hover {
+  color: white !important;
 }
 
 .header .menu-box {

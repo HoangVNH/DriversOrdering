@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
+import axios  from 'axios';
 import { connect } from 'react-redux';
+
+const addDriver = (Name, PhoneNum, Address, Password, RePassword) =>  axios.post('/account/api/signup', {Name, PhoneNum, Address, Password, RePassword}).then((res) => res.data ).catch(error => console.log(error));
 
 
 class Signup extends Component {
@@ -13,7 +16,8 @@ class Signup extends Component {
             PhoneNum: '',
             Address: '',
             Password: '',
-            RePassword: ''
+            RePassword: '',
+            thongbao: null
         }
     }
 
@@ -36,7 +40,17 @@ class Signup extends Component {
         item.Password = this.state.Password;
         item.RePassword = this.state.RePassword;
 
-        this.props.addUserStore(item);
+        addDriver(item.Name, item.PhoneNum, item.Address, item.Password, item.RePassword).then((res) => { this.setState({ thongbao: res }) });
+    }
+
+    ThongBaoLoi = () =>{
+        if(this.state.thongbao){
+
+            return this.state.thongbao;
+
+        } else {
+            return
+        }
     }
 
     render() {
@@ -135,6 +149,8 @@ class Signup extends Component {
 
                                         </div>
 
+                                        <p> {this.ThongBaoLoi()} </p>
+
                                         <button type="submit" className="button button-block">Đăng Ký</button>
 
                                     </form>
@@ -153,15 +169,13 @@ class Signup extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-
+        
     }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        addUserStore: (getItem) => {
-            dispatch({ type: "USER_SIGNUP", getItem })
-        }
+        
     }
 }
 

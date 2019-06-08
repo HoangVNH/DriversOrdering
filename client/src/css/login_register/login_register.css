@@ -1,14 +1,3 @@
-a {
-  text-decoration: none;
-  color: #1ab188;
-  -webkit-transition: 0.5s ease;
-  transition: 0.5s ease;
-}
-
-a:hover {
-  color: #179b77;
-}
-
 .form {
   background: rgba(19, 35, 47, 0.9);
   padding: 40px;
@@ -85,6 +74,22 @@ a:hover {
 .form .tab-content #signup input:focus, .form .tab-content #login input:focus {
   outline: 0;
   border-color: #1ab188;
+}
+
+.form .tab-content #signup a, .form .tab-content #login a {
+  text-decoration: none;
+  color: #1ab188;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+
+.form .tab-content #signup a:hover, .form .tab-content #login a:hover {
+  color: #179b77;
+}
+
+.form .tab-content #signup p {
+  color: red;
+  text-align: center;
 }
 
 .form .tab-content #signup #file {
