@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import Map from '../components/Map';
+// import Map from '../components/Map';
 import Map1 from '../components/Map1';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
