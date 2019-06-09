@@ -54,6 +54,7 @@ main {
     z-index: 2;
     transition: $transition-time;
     -webkit-transition: left $transition-time;
+    padding-top: 47px;
 }
 
 nav {
@@ -221,6 +222,7 @@ ul {
     padding: 0;
     overflow: hidden;
     height: 100%;
+    padding-top: 47px;
 }
 
 .toggled {
@@ -229,7 +231,7 @@ ul {
     box-sizing: border-box;
     padding: 0;
     overflow: hidden;
-    height: 100%;
+    height: 100%;  
 }
 
 .button-open-transition {

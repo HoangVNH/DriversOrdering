@@ -7,11 +7,11 @@ export default class Map extends Component {
 
 	render() {
 		return (
-      <div>
+      <main>
           <AsyncMap
             center={{ lat: GLOBAL.LATLNG.lat, lng: GLOBAL.LATLNG.lng }}
           />
-      </div>
+      </main>
         
 		);
 	}

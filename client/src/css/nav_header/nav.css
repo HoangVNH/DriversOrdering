@@ -43,6 +43,7 @@ main {
   -webkit-transition: 0.5s;
   transition: 0.5s;
   -webkit-transition: left 0.5s;
+  padding-top: 47px;
 }
 
 nav {
@@ -232,6 +233,7 @@ ul a li:hover i {
   padding: 0;
   overflow: hidden;
   height: 100%;
+  padding-top: 47px;
 }
 
 .toggled {

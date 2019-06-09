@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
- 
+import '../css/search/searchBar.css'
 export default class LocationSearchInput extends Component {
 	constructor(props) {
 		super(props);
@@ -30,13 +30,14 @@ export default class LocationSearchInput extends Component {
 			}}
 		>
 			{({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-			<div>
+			<div className="searchBar">
 				<input
 				{...getInputProps({
 					placeholder: 'Nhập địa chỉ của bạn',
 					className: 'location-search-input',
 				})}
 				/>
+				
 				<div className="autocomplete-dropdown-container">
 				{loading && <div>Loading...</div>}
 				{suggestions.map(suggestion => {
@@ -55,8 +56,10 @@ export default class LocationSearchInput extends Component {
 					);
 				})}
 				</div>
+				<i className="fa fa-stop-circle-o"></i>
 			</div>
 			)}
+
 		</PlacesAutocomplete>
 		);
 	}

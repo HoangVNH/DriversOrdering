@@ -123,23 +123,20 @@ export default class AsyncMap extends Component {
 		let map;
 		
 		if (this.props.center.lat !== undefined) {
-			map = <div>
-					<div>
-						
-						<MyMapComponent
-							googleMapURL= {GLOBAL.SERVER_HOST + API_URL.MAP}
-							loadingElement={
-								<div style={{ height: `500px` }} />
-							}
-							containerElement={
-								<div style={{ height: `500px` }} />
-							}
-							mapElement={
-								<div style={{  height: `500px`  }} />
-							}
-						/>
-					</div>
-			</div>
+			map = <div style={{  height: `100%`  }}>
+					<MyMapComponent
+						googleMapURL= {GLOBAL.SERVER_HOST + API_URL.MAP}
+						loadingElement={
+							<div style={{  height: `100%`  }} />
+						}
+						containerElement={
+							<div style={{  height: `100%`  }} />
+						}
+						mapElement={
+							<div style={{  height: `100%`  }} />
+						}
+					/>
+				</div>
 		} else {
 			map = <div style={{  height: `400px`  }} />
 		}
