@@ -1,7 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import 'leaflet/dist/leaflet.css';
+
 import * as serviceWorker from './serviceWorker';
+
+import 'leaflet/dist/leaflet.js';
 
 import { Provider } from 'react-redux';
 import store from './stores/store';

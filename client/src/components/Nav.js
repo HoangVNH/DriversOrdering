@@ -6,6 +6,13 @@ export default class nav extends Component {
         return (
             <nav>
                 <ul>
+                    <NavLink to="/">
+                        <li className="cli"> 
+                            <i className="fa fa-user-circle-o"></i>
+                            Đặt Xe
+                        </li>
+                    </NavLink>
+
                     <NavLink to="/info">
                         <li className="cli"> 
                             <i className="fa fa-user-circle-o"></i>

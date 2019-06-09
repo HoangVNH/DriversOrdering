@@ -4,20 +4,19 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.1",
+    "eslint": "^5.16.0",
+    "eslint-plugin-react": "^7.13.0",
     "jquery": "^3.4.1",
     "leaflet": "^1.5.1",
+    "leaflet-geosearch": "^2.7.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-geocode": "^0.1.2",
-    "react-google-autocomplete": "^1.1.0",
-    "react-google-maps": "^9.4.5",
     "react-leaflet": "^2.3.0",
-    "react-leaflet-search": "^0.6.0",
     "react-redux": "^7.0.3",
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1",
-    "recompose": "^0.30.0",
-    "redux": "^4.0.1"
+    "redux": "^4.0.1",
+    "socket.io-client": "^2.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
