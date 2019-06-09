@@ -3,7 +3,7 @@ import { default as API_URL } from "../apis/APICommonService";
 import { default as GLOBAL } from "./Constants";
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 import Geocode from "react-geocode";
-import PickUpBar from './BookingForm';
+import BookingForm from './BookingForm';
 import "../js/nav";
 
 Geocode.setApiKey(`${GLOBAL.API_KEY}`);

@@ -33,7 +33,7 @@ export default class BookingForm extends Component {
 					}}
 				>
 					{({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-					<div className="searchBar">
+					<div className="searchBar_from">
 						<input
 						{...getInputProps({
 							placeholder: 'Nhập địa chỉ của bạn',
@@ -74,7 +74,7 @@ export default class BookingForm extends Component {
 					}}
 				>
 					{({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-					<div className="searchBar">
+					<div className="searchBar_to">
 						<input
 						{...getInputProps({
 							placeholder: 'Nhập điểm đến',
@@ -100,11 +100,13 @@ export default class BookingForm extends Component {
 							);
 						})}
 						</div>
-						<i className="fa fa-stop-circle-o"></i>
+						<i className="fa fa-location-arrow"></i>
 					</div>
 					)}
 				</PlacesAutocomplete>
 				
+						<button className="btn btn-info tim-kiem">Tìm Kiếm </button>
+
 				</form>
 			</div>
 		);
