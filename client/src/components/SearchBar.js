@@ -9,14 +9,10 @@ class SearchBar extends MapControl {
   createLeafletElement(opts) {
     const provider = new OpenStreetMapProvider();
     const searchControl = new GeoSearchControl({
-      provider: provider,
-	  showMarker: true,
-	  showPopup: false,
-	  autoClose: true,
-	  retainZoomLevel: false,
-	  animateZoom: true,
-	  keepResult: false,
-	  position: "topleft"
+	  provider: provider,
+      searchLabel: 'Nhập địa chỉ của bạn',
+      keepResult: true,
+      autoClose: true
     });
     return searchControl;
   }
