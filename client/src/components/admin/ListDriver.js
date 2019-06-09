@@ -60,34 +60,14 @@ class ListDriver extends Component {
                             <td>227 Nguyễn Văn Cừ, Q5</td>
                             <td>DJKSYFFGFW</td>
                             <td>
-                                <a classname="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-1.jpg" data-lightbox="example-1">
-                                <img width={50} classname="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-1.jpg" alt="anh22" />
+                                <a className="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-1.jpg" data-lightbox="example-1">
+                                <img width={50} className="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-1.jpg" alt="anh22" />
                                 </a>
-                                <a classname="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-1.jpg" data-lightbox="example-1">
-                                <img width={50} classname="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-1.jpg" alt="anh22" />
+                                <a className="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-1.jpg" data-lightbox="example-1">
+                                <img width={50} className="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-1.jpg" alt="anh22" />
                                 </a>
-                                <a classname="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-1.jpg" data-lightbox="example-1">
-                                <img width={50} classname="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-1.jpg" alt="anh22" />
-                                </a>
-                            </td>
-                            <td>
-                                <button className="btn btn-success">Kích Hoạt</button>
-                            </td>
-                            </tr>
-                            <tr>
-                            <td>Trần Phạm Hoàng Nam</td>
-                            <td>0123 345 566</td>
-                            <td>227 Nguyễn Văn Cừ, Q5</td>
-                            <td>DJKSYFFGFW</td>
-                            <td>
-                                <a classname="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-1.jpg" data-lightbox="example-1">
-                                <img width={50} classname="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-1.jpg" alt="anh22" />
-                                </a>
-                                <a classname="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-1.jpg" data-lightbox="example-1">
-                                <img width={50} classname="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-1.jpg" alt="anh22" />
-                                </a>
-                                <a classname="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-1.jpg" data-lightbox="example-1">
-                                <img width={50} classname="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-1.jpg" alt="anh22" />
+                                <a className="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-1.jpg" data-lightbox="example-1">
+                                <img width={50} className="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-1.jpg" alt="anh22" />
                                 </a>
                             </td>
                             <td>
@@ -100,14 +80,34 @@ class ListDriver extends Component {
                             <td>227 Nguyễn Văn Cừ, Q5</td>
                             <td>DJKSYFFGFW</td>
                             <td>
-                                <a classname="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-1.jpg" data-lightbox="example-1">
-                                <img width={50} classname="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-1.jpg" alt="anh22" />
+                                <a className="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-1.jpg" data-lightbox="example-1">
+                                <img width={50} className="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-1.jpg" alt="anh22" />
                                 </a>
-                                <a classname="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-1.jpg" data-lightbox="example-1">
-                                <img width={50} classname="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-1.jpg" alt="anh22" />
+                                <a className="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-1.jpg" data-lightbox="example-1">
+                                <img width={50} className="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-1.jpg" alt="anh22" />
                                 </a>
-                                <a classname="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-1.jpg" data-lightbox="example-1">
-                                <img width={50} classname="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-1.jpg" alt="anh22" />
+                                <a className="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-1.jpg" data-lightbox="example-1">
+                                <img width={50} className="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-1.jpg" alt="anh22" />
+                                </a>
+                            </td>
+                            <td>
+                                <button className="btn btn-success">Kích Hoạt</button>
+                            </td>
+                            </tr>
+                            <tr>
+                            <td>Trần Phạm Hoàng Nam</td>
+                            <td>0123 345 566</td>
+                            <td>227 Nguyễn Văn Cừ, Q5</td>
+                            <td>DJKSYFFGFW</td>
+                            <td>
+                                <a className="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-1.jpg" data-lightbox="example-1">
+                                <img width={50} className="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-1.jpg" alt="anh22" />
+                                </a>
+                                <a className="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-1.jpg" data-lightbox="example-1">
+                                <img width={50} className="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-1.jpg" alt="anh22" />
+                                </a>
+                                <a className="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-1.jpg" data-lightbox="example-1">
+                                <img width={50} className="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-1.jpg" alt="anh22" />
                                 </a>
                             </td>
                             <td>

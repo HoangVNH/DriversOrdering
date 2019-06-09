@@ -26,8 +26,8 @@ export default class Edit_Info extends Component {
                     <div className="col-md-4">
                         <div className="form-hinhanh">
                             <h5 className="title">Thay đổi ảnh đại diện</h5>
-                            <a className="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-1.jpg" data-lightbox="example-1">
-                                <img className="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-1.jpg" alt="anh22" />
+                            <a className="example-image-link" href="https://via.placeholder.com/600x350" data-lightbox="example-1">
+                                <img className="example-image" src="https://via.placeholder.com/600x350" alt="anh22" />
                             </a>
                             <form>
                                 <div className="thaydoi">
@@ -46,8 +46,8 @@ export default class Edit_Info extends Component {
                     <div className="col-md-4">
                         <div className="form-hinhanh">
                             <h5 className="title">Thay đổi biển số xe</h5>
-                            <a className="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-1.jpg" data-lightbox="example-1">
-                                <img className="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-1.jpg" alt="anh22" />
+                            <a className="example-image-link" href="https://via.placeholder.com/600x350" data-lightbox="example-1">
+                                <img className="example-image" src="https://via.placeholder.com/600x350" alt="anh22" />
                             </a>
                             <form>
                                 <div className="thaydoi">
@@ -66,8 +66,8 @@ export default class Edit_Info extends Component {
                     <div className="col-md-4">
                         <div className="form-hinhanh">
                             <h5 className="title">Thay đổi hình ảnh xe</h5>
-                            <a className="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-1.jpg" data-lightbox="example-1">
-                                <img className="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-1.jpg" alt="anh22" />
+                            <a className="example-image-link" href="https://via.placeholder.com/600x350" data-lightbox="example-1">
+                                <img className="example-image" src="https://via.placeholder.com/600x350" alt="anh22" />
                             </a>
                             <form>
                                 <div className="thaydoi">

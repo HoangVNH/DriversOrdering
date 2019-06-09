@@ -22,11 +22,12 @@ $transition-time: 0.5s;
 html,
 body {
     height: 100%;
-    overflow-x:hidden;
+    overflow-x: hidden;
     text-size-adjust: 100%;
     margin: 0;
     padding: 0;
-    .root{
+
+    .root {
         width: 100%;
         height: 100%;
     }
@@ -35,16 +36,19 @@ body {
 * {
     box-sizing: border-box;
 }
-.bgLogin{
+
+.bgLogin {
     background-image: url('../../images/background_1.jpg');
     background-size: cover;
     width: 100%;
     height: 100%;
-    .dangky-dangnhap{
+
+    .dangky-dangnhap {
         margin: 0 auto;
         height: 100%;
     }
 }
+
 main {
     position: relative;
     top: 0px;
@@ -160,7 +164,8 @@ ul {
             a {
                 text-decoration: none;
                 color: #1ab188 !important;
-                &:hover{
+
+                &:hover {
                     color: white !important;
                 }
             }
@@ -231,7 +236,7 @@ ul {
     box-sizing: border-box;
     padding: 0;
     overflow: hidden;
-    height: 100%;  
+    height: 100%;
 }
 
 .button-open-transition {

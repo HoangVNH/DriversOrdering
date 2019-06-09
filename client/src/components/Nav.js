@@ -8,7 +8,7 @@ export default class nav extends Component {
                 <ul>
                     <NavLink to="/">
                         <li className="cli"> 
-                            <i className="fa fa-user-circle-o"></i>
+                            <i className="fa fa-motorcycle"></i>
                             Đặt Xe
                         </li>
                     </NavLink>
