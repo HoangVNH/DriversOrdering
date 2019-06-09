@@ -1,9 +1,9 @@
-const express = require('express');
-const bodyParser = require('body-parser');
+const express = require('./node_modules/express');
+const bodyParser = require('./node_modules/body-parser');
 const mongoose = require('mongoose');
-const dotenv = require("dotenv");
-const fileUpload = require('express-fileupload');
-const cors = require('cors');
+const dotenv = require("./node_modules/dotenv/lib/main");
+const fileUpload = require('./node_modules/express-fileupload/lib');
+const cors = require('./node_modules/cors/lib');
 
 var app = express();
 
