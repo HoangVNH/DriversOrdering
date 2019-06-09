@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 import React, { Component } from "react";
 import { default as GLOBAL } from "./Constants";
 import "../js/nav";
@@ -59,4 +57,3 @@ export default class MyMap extends Component {
 		);
 	}
 }
->>>>>>> master
