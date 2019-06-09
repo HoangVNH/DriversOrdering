@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { default as API_URL } from "../apis/APICommonService";
 import { default as GLOBAL } from "./Constants";
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
-import Geocode from 'react-geocode';
-import Autocomplete from 'react-google-autocomplete';
+import Geocode from "react-geocode";
+import LocationSearchInput from './SearchBar';
 import "../js/nav";
 
 Geocode.setApiKey(`${GLOBAL.API_KEY}`);
@@ -23,7 +23,8 @@ export default class AsyncMap extends Component {
 			markerPostition: {
 				lat: this.props.center.lat,
 				lng: this.props.center.lng
-			}
+			},
+			zoom: 13
 		}
 	}
 
@@ -67,7 +68,8 @@ export default class AsyncMap extends Component {
 			markerPosition: {
 				lat: pickLatValue,
 				lng: pickLngValue
-			}
+			},
+			zoom: 17
 		})
 	};
 
@@ -77,7 +79,7 @@ export default class AsyncMap extends Component {
 			withGoogleMap (
 				props => (
 					<GoogleMap
-						defaultZoom={17}
+						defaultZoom={this.state.zoom}
 						defaultCenter={{ lat: this.state.mapPosition.lat, lng: this.state.mapPosition.lng }}
 						defaultOptions={{
 							mapTypeControl: false,
@@ -99,19 +101,7 @@ export default class AsyncMap extends Component {
 								}
 								]
 							}}>
-						<Autocomplete 
-							style={{
-								width: '60%',
-								height: '40px',
-								paddingLeft: '16px',
-								marginTop: '2px',
-								marginBottom: '100px',
-							}}
-							onPlaceSelected = { this.onPlaceSelected }
-							types={['(regions']}
-							componentRestrictions={{country: "vi"}}
-						/>
-						<Autocomplete
+						<LocationSearchInput
 							style={{
 								width: '100%',
 								height: '40px',
@@ -119,9 +109,6 @@ export default class AsyncMap extends Component {
 								marginTop: '2px',
 								marginBottom: '500px'
 							}}
-							onPlaceSelected={ this.onPlaceSelected }
-							types={['(regions)']}
-							componentRestrictions={{country: "vi"}}
 						/>
 						<Marker
 							draggable={false}
