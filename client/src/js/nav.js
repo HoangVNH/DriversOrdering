@@ -12,6 +12,7 @@ $(document).ready(function () {
 
         $('.cli').on('click', function () {
             $('nav').toggleClass('toggled');
+            $('main').toggleClass('toggled-map');
             $('.menu-btn').toggleClass("button-open");
         })
 
