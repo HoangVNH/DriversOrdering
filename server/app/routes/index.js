@@ -7,7 +7,7 @@ router.use("/order", require(__dirname + "/order")); // TODO: localhost:5000/ord
 
 
 router.get('/', function (req, res) { // TODO: localhost:5000/
-    res.send('HELLO');
+    res.sen('HELLO');
 });
 
 module.exports = router;

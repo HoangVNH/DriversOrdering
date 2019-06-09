@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { connect } from 'react-redux';
+import axios  from 'axios';
+
+const addDriver = (Name, PhoneNum, Address, Password, RePassword) =>  axios.post('/account/api/signup', {Name, PhoneNum, Address, Password, RePassword}).then((res) => res.data ).catch(error => console.log(error));
 
 
 class Signup extends Component {
@@ -13,7 +15,8 @@ class Signup extends Component {
             PhoneNum: '',
             Address: '',
             Password: '',
-            RePassword: ''
+            RePassword: '',
+            thongbao: null
         }
     }
 
@@ -25,20 +28,28 @@ class Signup extends Component {
         });
     }
 
-    preventDefault = (event) => {
-        event.preventDefault();
-    }
+    handleUploadImage = (ev) => {
+        ev.preventDefault();
 
-    addUser = (Name, PhoneNum, Address, Password, RePassword) => {     
         var item = {};
 
-        item.Name = Name;
-        item.PhoneNum = PhoneNum;
-        item.Address = Address;
-        item.Password = Password;
-        item.RePassword = RePassword;
+        item.Name = this.state.Name;
+        item.PhoneNum = this.state.PhoneNum;
+        item.Address = this.state.Address;
+        item.Password = this.state.Password;
+        item.RePassword = this.state.RePassword;
 
-        this.props.addUserStore(item);
+        addDriver(item.Name, item.PhoneNum, item.Address, item.Password, item.RePassword).then((res) => { this.setState({ thongbao: res }) });
+    }
+
+    ThongBaoLoi = () =>{
+        if(this.state.thongbao){
+
+            return this.state.thongbao;
+
+        } else {
+            return
+        }
     }
 
     render() {
@@ -62,7 +73,7 @@ class Signup extends Component {
                                 <div id="signup">   
                                     <h3>Đăng Ký</h3>
 
-                                    <form action="" method="POST" encType="multipart/form-data">
+                                    <form onSubmit={this.handleUploadImage} encType="multipart/form-data">
 
                                         <div className="top-row">
                                             <div className="field-wrap">
@@ -73,7 +84,6 @@ class Signup extends Component {
                                                     autoComplete="off" 
                                                     placeholder="Họ Tên"
                                                     name="Name"
-                                                    
                                                 />
                                             </div>
                                             <div className="field-wrap">
@@ -83,9 +93,8 @@ class Signup extends Component {
                                                     required 
                                                     autoComplete="off"
                                                     pattern="[0-9]{10}"
-                                                    placeholder="Số Điện Thoại" 
+                                                    placeholder="Số Điện Thoại"
                                                     name="PhoneNum"
-                                                    
                                                 />
                                             </div>
                                         </div>
@@ -97,9 +106,8 @@ class Signup extends Component {
                                                 type="text" 
                                                 required 
                                                 autoComplete="off" 
-                                                placeholder="Địa Chỉ" 
+                                                placeholder="Địa Chỉ"
                                                 name="Address"
-                                                
                                             />
 
                                         </div>
@@ -111,9 +119,8 @@ class Signup extends Component {
                                                 type="password" 
                                                 required 
                                                 autoComplete="off" 
-                                                placeholder="Nhập Mật Khẩu" 
+                                                placeholder="Nhập Mật Khẩu"
                                                 name="Password"
-                                                
                                             />
 
                                         </div>
@@ -131,7 +138,7 @@ class Signup extends Component {
 
                                         </div>
 
-                                        <div className="field-wrap">
+                                        {/* <div className="field-wrap">
 
                                             <label htmlFor="file" className="file_label">
                                                 <i className="fa fa-upload" aria-hidden="true"></i>
@@ -139,12 +146,12 @@ class Signup extends Component {
                                             </label>
                                             <input id="file" type="file" name="file" multiple />
 
-                                        </div>
+                                        </div> */}
 
-                                        <button 
-                                            type="submit" 
-                                            onClick={(Name, PhoneNum, Address, Password, RePassword) => this.addUser(this.state.Name, this.state.PhoneNum, this.state.Address, this.state.Password, this.state.RePassword)} 
-                                            className="button button-block">Đăng Ký</button>
+                                        <p> {this.ThongBaoLoi()} </p>
+
+                                        <button type="submit" className="button button-block">Đăng Ký</button>
+
                                     </form>
                                 </div>
 
@@ -159,18 +166,5 @@ class Signup extends Component {
     }
 }
 
-const mapStateToProps = (state, ownProps) => {
-    return {
 
-    }
-}
-
-const mapDispatchToProps = (dispatch, ownProps) => {
-    return {
-        addUserStore: (getItem) => {
-            dispatch({ type: "ADD_USER", getItem })
-        }
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Signup);
+export default Signup;

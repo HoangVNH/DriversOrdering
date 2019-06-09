@@ -31,7 +31,7 @@ router.post("/api/login", function (req, res) {
 
     // ! Kiểm tra phone, password
     const { error } = login_Valida(user);
-    if(error) return res.status(400).send(error.details[0].message);
+    if(error) return res.send(error.details[0].message);
 
     // ! Kiểm tra phone đã đăng kí chưa
     const PhoneExist = Account.getAccountByPhone(user.PhoneNum);
@@ -44,16 +44,16 @@ router.post("/api/login", function (req, res) {
             var status = helper.compare_password(user.Password, params.password);
             if(!status){
     
-                return res.status(400).send("Nhập sai mật khẩu");
+                return res.send("Nhập sai mật khẩu");
             }else{
     
                 // ! tạo và gán mã Token
                 const token = jwt.sign({ _id: params._id }, process.env.TOKEN_SECRET);
-                res.header('auth-token', token).send(token);
+                res.header('auth-token', token).send("Đăng Nhập Thành Công");
             }
 
         } else {
-            return res.status(400).send("Số điện thoại chưa tồn tại");
+            return res.send("Số điện thoại chưa tồn tại");
         }
     })
  
@@ -67,17 +67,17 @@ router.post("/api/signup", function (req, res) {
 
     // ! Kiểm tra name, phone, address, password, repassword
     const { error } = register_Valida(user);
-    if(error) return res.status(400).send(error.details[0].message);
+    if(error) return res.send(error.details[0].message);
 
     // ! không trùng password
-    if(user.Password != user.RePassword) return res.status(400).send("Mật khẩu không trùng nhau");
+    if(user.Password != user.RePassword) return res.send("Mật khẩu không trùng nhau");
     
     // ! Kiểm tra Phone đã tồn tại chưa
     const PhoneExist = Account.getAccountByPhone(user.PhoneNum);
     PhoneExist.then(function(data){
         if(data){
 
-            return res.status(400).send("Số điện thoại đã tồn tại");
+            return res.send("Số điện thoại đã tồn tại");
 
         } else {
             // ! mã hóa password
@@ -88,7 +88,7 @@ router.post("/api/signup", function (req, res) {
 
             Result.then(function(dulieu){
 
-                res.send("Thêm thành công");
+                res.send("Đăng Ký Thành Công");
 
             }).catch(function(err){
 

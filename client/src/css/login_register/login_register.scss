@@ -14,15 +14,7 @@ $normal: 400;
 $bold: 600;
 $br: 4px;
 
-a {
-  text-decoration: none;
-  color: $main;
-  transition: 0.5s ease;
 
-  &:hover {
-    color: $main-dark;
-  }
-}
 
 .form {
   background: rgba($form-bg, 0.9);
@@ -97,9 +89,22 @@ a {
           border-color: $main;
         }
       }
-
+      a {
+        text-decoration: none;
+        color: $main;
+        transition: 0.5s ease;
+      
+        &:hover {
+          color: $main-dark;
+        }
+      }
+      p{
+        color: $main;
+        text-align: center;
+      }
     }
     #signup{
+      
       #file {  display: none}
       .file_label {
         display: block;

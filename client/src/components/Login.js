@@ -1,34 +1,52 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
+import axios  from 'axios';
+
+const getDriver = (PhoneNum, Password) =>  axios.post('/account/api/login', {PhoneNum,Password}).then((res) => res.data ).catch(error => console.log(error));
+
 class Login extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            txtPhoneNum: '',
-            txtPassword: '',
+            PhoneNum: '',
+            Password: '',
+            thongbao: null
         };
     }
 
-    onHandleChange = (e) => {
-        var target = e.target;
-        var name = target.name;
-        var value = target.value;
+    onHandleChange = (event) => {
+        var name = event.target.name;
+        var value = event.target.value;
         this.setState({
             [name] : value
         });
     }
 
-    onHandleSubmit = (e) => {
-        e.preventDefault();
-        console.log(this.state.txtPhoneNum);
-        console.log(this.state.txtPassword);
+    onHandleSubmit = (ev) => {
+        ev.preventDefault();
+
+        var item = {};
+
+        item.PhoneNum = this.state.PhoneNum;
+        item.Password = this.state.Password;
+
+        getDriver(item.PhoneNum, item.Password).then((res) => { this.setState({ thongbao: res }) });
+
+    }
+
+    ThongBaoLoi = () =>{
+        if(this.state.thongbao){
+
+            return this.state.thongbao;
+
+        } else {
+            return
+        }
     }
 
     render() {
-
-        var { txtPhoneNum, txtPassword } = this.state;
 
         return (
             <div className="bgLogin">
@@ -46,7 +64,7 @@ class Login extends Component {
                             <div className="tab-content">
                                 <div id="login">   
                                     <h3>Đăng Nhập Để Bắt Đầu!</h3>
-                                    <form action="/" method="post" onSubmit={this.onHandleSubmit}>
+                                    <form onSubmit={this.onHandleSubmit}>
                                         <div className="field-wrap">
 
                                             <input 
@@ -55,9 +73,8 @@ class Login extends Component {
                                                 autoComplete="off" 
                                                 placeholder="Số Điện Thoại"
                                                 pattern="[0-9]{10}"
-                                                name="txtPhoneNum"
-                                                value={txtPhoneNum}
-                                                onChange={this.onHandleChange}
+                                                name="PhoneNum"
+                                                onChange={(event) => {this.onHandleChange(event)}}
                                             />
 
                                         </div>
@@ -68,14 +85,15 @@ class Login extends Component {
                                                 required 
                                                 autoComplete="off" 
                                                 placeholder="Mật Khẩu" 
-                                                name="txtPassword"
-                                                value={txtPassword}
-                                                onChange={this.onHandleChange}
+                                                name="Password"
+                                                onChange={(event) => {this.onHandleChange(event)}}
                                             />
 
                                         </div>
 
-                                        <p className="forgot"><NavLink to="/login/forget_pass">Quên mật khẩu?</NavLink></p>
+                                        {/* <p className="forgot"><NavLink to="/login/forget_pass">Quên mật khẩu?</NavLink></p> */}
+
+                                        <p> {this.ThongBaoLoi()} </p>
 
                                         <button type="submit" className="button button-block">Đăng Nhập</button>
                                     </form>
