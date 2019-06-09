@@ -4,9 +4,6 @@ import App from './App';
 
 import * as serviceWorker from './serviceWorker';
 
-import 'leaflet/dist/leaflet.css';
-import 'leaflet/dist/leaflet.js';
-
 import { Provider } from 'react-redux';
 import store from './stores/store';
 
