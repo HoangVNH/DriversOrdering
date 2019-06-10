@@ -5,107 +5,125 @@ import '../css/search/searchBar.css';
 export default class BookingForm extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { address: '' };
+		this.state = { 
+			pickAddress: '',
+			dropAddress: ''
+		};
 	}
 	
-	handleChange = address => {
-		this.setState({ address });
+	onChangePickAddress = pickAddress => {
+		this.setState({ pickAddress });
+	};
+
+	onChangeDropAddress = dropAddress => {
+		this.setState({ dropAddress });
 	};
 	
-	handleSelect = address => {
-		geocodeByAddress(address)
-		.then(results => getLatLng(results[0]))
-		.then(latLng => console.log('Success', latLng))
-		.catch(error => console.error('Error', error));
+	handleSelectPickAddress = pickAddress => {
+		geocodeByAddress(pickAddress)
+			.then(result => getLatLng(result[0]))
+			.then(latLng => {
+				console.log('Get Pick address successfully ', latLng);
+				this.setState({ pickAddress });
+			})
+			.catch(error => console.log('Error Pick address ', error));
+	};
+
+	handleSelectDropAddress = dropAddress => {
+		geocodeByAddress(dropAddress)
+			.then(result => getLatLng(result[0]))
+			.then(latLng => {
+				console.log('Get Drop address successfully ', latLng);
+				this.setState({ dropAddress });
+			})
+			.catch(error => console.log('Error Drop address ', error));
 	};
 	
 	render() {
 		return (
 			<div>
 				<form>
-				<PlacesAutocomplete
-					value={this.state.address}
-					onChange={this.handleChange}
-					onSelect={this.handleSelect}
-					searchOptions={{
-						componentRestrictions: {country: 'vn'},
-						types: ['address']
-					}}
-				>
-					{({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-					<div className="searchBar_from">
-						<input
-						{...getInputProps({
-							placeholder: 'Nhập địa chỉ của bạn',
-							className: 'location-search-input',
-						})}
-						/>
-						
-						<div className="autocomplete-dropdown-container">
-						{loading && <div>Loading...</div>}
-						{suggestions.map(suggestion => {
-							const className = suggestion.active ? 'suggestion-item--active' : 'suggestion-item';
-							
-							const style = suggestion.active ? { backgroundColor: '#fafafa', cursor: 'pointer' } : { backgroundColor: '#ffffff', cursor: 'pointer' };
-							return (
-							<div
-								{...getSuggestionItemProps(suggestion, {
-								className,
-								style,
+					<PlacesAutocomplete
+						value={this.state.pickAddress}
+						onChange={this.onChangePickAddress}
+						onSelect={this.handleSelectPickAddress}
+						searchOptions={{
+							componentRestrictions: {country: 'vn'},
+							types: ['address']
+						}}
+						highlightFirstSuggestion={true}
+					>
+						{({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+						<div className="searchBar_from">
+							<input
+								{...getInputProps({
+									placeholder: 'Nhập địa chỉ của bạn',
 								})}
-							>
-								<span>{suggestion.description}</span>
+							/>
+							
+							<div>
+								{loading && <div>Loading...</div>}
+								{suggestions.map(suggestion => {
+									const className = suggestion.active ? 'suggestion-item--active' : 'suggestion-item';
+									
+									const style = suggestion.active ? { backgroundColor: '#fafafa', cursor: 'pointer' } : { backgroundColor: '#ffffff', cursor: 'pointer' };
+									return (
+									<div
+										{...getSuggestionItemProps(suggestion, {
+											className, style,
+										})}
+									>
+										<span>{suggestion.description}</span>
+									</div>
+									);
+								})}
 							</div>
-							);
-						})}
+							<i className="fa fa-stop-circle-o"></i>
 						</div>
-						<i className="fa fa-stop-circle-o"></i>
-					</div>
-					)}
-				</PlacesAutocomplete>
+						)}
+					</PlacesAutocomplete>
 
-				<PlacesAutocomplete
-					value={this.state.address}
-					onChange={this.handleChange}
-					onSelect={this.handleSelect}
-					searchOptions={{
-						componentRestrictions: {country: 'vn'},
-						types: ['address']
-					}}
-				>
-					{({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-					<div className="searchBar_to">
-						<input
-						{...getInputProps({
-							placeholder: 'Nhập điểm đến',
-							className: 'location-search-input',
-						})}
-						/>
-						
-						<div className="autocomplete-dropdown-container">
-						{loading && <div>Loading...</div>}
-						{suggestions.map(suggestion => {
-							const className = suggestion.active ? 'suggestion-item--active' : 'suggestion-item';
-							
-							const style = suggestion.active ? { backgroundColor: '#fafafa', cursor: 'pointer' } : { backgroundColor: '#ffffff', cursor: 'pointer' };
-							return (
-							<div
-								{...getSuggestionItemProps(suggestion, {
-								className,
-								style,
+					<PlacesAutocomplete
+						value={this.state.dropAddress}
+						onChange={this.onChangeDropAddress}
+						onSelect={this.handleSelectDropAddress}
+						searchOptions={{
+							componentRestrictions: {country: 'vn'},
+							types: ['address']
+						}}
+						highlightFirstSuggestion={true}
+					>
+						{({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+						<div className="searchBar_to">
+							<input
+								{...getInputProps({
+									placeholder: 'Nhập điểm đến',
 								})}
-							>
-								<span>{suggestion.description}</span>
+							/>
+							
+							<div>
+								{loading && <div>Loading...</div>}
+								{suggestions.map(suggestion => {
+									const className = suggestion.active ? 'suggestion-item--active' : 'suggestion-item';
+									
+									const style = suggestion.active ? { backgroundColor: '#fafafa', cursor: 'pointer' } : { backgroundColor: '#ffffff', cursor: 'pointer' };
+									return (
+									<div
+										{...getSuggestionItemProps(suggestion, {
+											className, style,
+										})}
+									>
+										<span>{suggestion.description}</span>
+									</div>
+									);
+								})}
 							</div>
-							);
-						})}
+							<i className="fa fa-location-arrow"></i>
 						</div>
-						<i className="fa fa-location-arrow"></i>
-					</div>
-					)}
-				</PlacesAutocomplete>
+						)}
+					</PlacesAutocomplete>
 				
-						<button className="btn btn-info tim-kiem">Tìm Kiếm </button>
+					<button className="btn btn-info tim-kiem">Đặt Xe </button>
 
 				</form>
 			</div>
