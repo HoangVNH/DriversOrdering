@@ -49,7 +49,7 @@ router.post("/api/login", function (req, res) {
     
                 // ! tạo và gán mã Token
                 const token = jwt.sign({ _id: params._id }, process.env.TOKEN_SECRET);
-                res.header('auth-token', token).send("Đăng Nhập Thành Công");
+                res.header('token', token).send("Đăng Nhập Thành Công");
             }
 
         } else {
@@ -88,7 +88,8 @@ router.post("/api/signup", function (req, res) {
 
             Result.then(function(dulieu){
 
-                res.send("Đăng Ký Thành Công");
+                 // ! Đăng ký thành công
+                res.send("");
 
             }).catch(function(err){
 

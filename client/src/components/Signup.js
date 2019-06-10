@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import axios  from 'axios';
-
-const addDriver = (Name, PhoneNum, Address, Password, RePassword) =>  axios.post('/account/api/signup', {Name, PhoneNum, Address, Password, RePassword}).then((res) => res.data ).catch(error => console.log(error));
-
+import AuthService from './AuthService';
 
 class Signup extends Component {
 
     constructor(props) {
         super(props);
+        this.onHandleChange = this.onHandleChange.bind(this);
+        this.handleFormSubmit = this.handleFormSubmit.bind(this);
+        this.Auth = new AuthService();
+
         this.state = {
             Name: '',
             PhoneNum: '',
@@ -20,6 +21,8 @@ class Signup extends Component {
         }
     }
 
+    
+
     onHandleChange = (event) => {
         var name = event.target.name;
         var value = event.target.value;
@@ -28,18 +31,22 @@ class Signup extends Component {
         });
     }
 
-    handleUploadImage = (ev) => {
-        ev.preventDefault();
 
-        var item = {};
-
-        item.Name = this.state.Name;
-        item.PhoneNum = this.state.PhoneNum;
-        item.Address = this.state.Address;
-        item.Password = this.state.Password;
-        item.RePassword = this.state.RePassword;
-
-        addDriver(item.Name, item.PhoneNum, item.Address, item.Password, item.RePassword).then((res) => { this.setState({ thongbao: res }) });
+    handleFormSubmit(e){
+        e.preventDefault();
+      
+        this.Auth.signup(this.state.Name,this.state.PhoneNum, this.state.Address, this.state.Password, this.state.RePassword)
+            .then(res =>{
+                if(res.data === ""){
+                    this.props.history.replace('/login');
+                }
+                else {
+                    this.setState({ thongbao: res.data })
+                }      
+            })
+            .catch(err =>{
+                alert(err);
+            })
     }
 
     ThongBaoLoi = () =>{
@@ -73,7 +80,7 @@ class Signup extends Component {
                                 <div id="signup">   
                                     <h3>Đăng Ký</h3>
 
-                                    <form onSubmit={this.handleUploadImage} encType="multipart/form-data">
+                                    <form onSubmit={this.handleFormSubmit} encType="multipart/form-data">
 
                                         <div className="top-row">
                                             <div className="field-wrap">

@@ -1,7 +1,52 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
-export default class nav extends Component {
+import { connect } from 'react-redux'
+import AuthService from './AuthService';
+
+
+class nav extends Component {
+
+    constructor(props) {
+        super(props)
+        this.Auth = new AuthService();
+    }
+
+    KiemTraState = () => {
+        if(this.Auth.loggedIn()){
+            return (
+                <NavLink to="/info">
+                    <li className="cli"> 
+                        <i className="fa fa-user-circle-o"></i>
+                        Thông Tin Cá Nhân
+                    </li>
+                </NavLink>
+            )
+        } else {
+            if(this.props.isEdit){
+                return (
+                    <NavLink to="/info">
+                        <li className="cli"> 
+                            <i className="fa fa-user-circle-o"></i>
+                            Thông Tin Cá Nhân
+                        </li>
+                    </NavLink>
+                )
+            } else {
+                return (
+                    <NavLink to="/login">
+                        <li className="cli"> 
+                            <i className="fa fa-sign-in"></i>
+                            Đăng Nhập
+                        </li>
+                    </NavLink>
+                )
+            }
+        }   
+
+    }
+    
+
     render() {
         return (
             <nav>
@@ -13,19 +58,7 @@ export default class nav extends Component {
                         </li>
                     </NavLink>
 
-                    <NavLink to="/info">
-                        <li className="cli"> 
-                            <i className="fa fa-user-circle-o"></i>
-                            Thông Tin Cá Nhân
-                        </li>
-                    </NavLink>
-
-                    <NavLink to="/login">
-                        <li className="cli"> 
-                            <i className="fa fa-sign-in"></i>
-                            Đăng Nhập
-                        </li>
-                    </NavLink>
+                    { this.KiemTraState() }
 
                     <NavLink to="/about">
                         <li className="cli"> 
@@ -38,3 +71,18 @@ export default class nav extends Component {
         )
     }
 }
+
+const mapStateToProps = (state, ownProps) => {
+    return {
+      isEdit: state.isEdit
+    }
+  }
+  const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+      changeEditStatus: () => {
+        dispatch({type: "CHANGE_EDIT_STATUS"})
+      }
+    }
+  }
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(nav)

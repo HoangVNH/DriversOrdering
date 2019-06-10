@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import axios  from 'axios';
+import { connect } from 'react-redux';
+import AuthService from './AuthService';
 
-const getDriver = (PhoneNum, Password) =>  axios.post('/account/api/login', {PhoneNum,Password}).then((res) => res.data ).catch(error => console.log(error));
 
 class Login extends Component {
 
     constructor(props) {
         super(props);
+        this.onHandleChange = this.onHandleChange.bind(this);
+        this.handleFormSubmit = this.handleFormSubmit.bind(this);
+        this.Auth = new AuthService();
+
         this.state = {
             PhoneNum: '',
             Password: '',
             thongbao: null
-        };
+        }
     }
 
     onHandleChange = (event) => {
@@ -24,17 +28,6 @@ class Login extends Component {
         });
     }
 
-    onHandleSubmit = (ev) => {
-        ev.preventDefault();
-
-        var item = {};
-
-        item.PhoneNum = this.state.PhoneNum;
-        item.Password = this.state.Password;
-
-        getDriver(item.PhoneNum, item.Password).then((res) => { this.setState({ thongbao: res }) });
-
-    }
 
     ThongBaoLoi = () =>{
         if(this.state.thongbao){
@@ -44,6 +37,29 @@ class Login extends Component {
         } else {
             return
         }
+    }
+
+    handleFormSubmit(e){
+        e.preventDefault();
+      
+        this.Auth.login(this.state.PhoneNum,this.state.Password)
+            .then(res =>{
+                if(res.headers.token){
+                    this.props.changeEditStatus();
+                    this.props.history.replace('/');
+                }
+                else {
+                    this.setState({ thongbao: res.data })
+                }      
+            })
+            .catch(err =>{
+                alert(err);
+            })
+    }
+
+    componentWillMount(){
+        if(this.Auth.loggedIn())
+            this.props.history.replace('/');
     }
 
     render() {
@@ -64,7 +80,7 @@ class Login extends Component {
                             <div className="tab-content">
                                 <div id="login">   
                                     <h3>Đăng Nhập Để Bắt Đầu!</h3>
-                                    <form onSubmit={this.onHandleSubmit}>
+                                    <form onSubmit={this.handleFormSubmit}>
                                         <div className="field-wrap">
 
                                             <input 
@@ -91,8 +107,6 @@ class Login extends Component {
 
                                         </div>
 
-                                        {/* <p className="forgot"><NavLink to="/login/forget_pass">Quên mật khẩu?</NavLink></p> */}
-
                                         <p> {this.ThongBaoLoi()} </p>
 
                                         <button type="submit" className="button button-block">Đăng Nhập</button>
@@ -107,4 +121,22 @@ class Login extends Component {
     }
 }
 
-export default Login;
+const mapStateToProps = (state, ownProps) => {
+    return {
+      // sẽ nhận đc thuộc tính this.props.editItem
+      editItem: state.editItem
+     
+    }
+  } 
+  
+// dùng hàm nào trong store thì ghi vào đây
+const mapDispatchToProps = (dispatch, ownProps) => {
+return {
+    changeEditStatus: () => {
+    dispatch({type: "CHANGE_EDIT_STATUS"})
+    }
+}
+} 
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

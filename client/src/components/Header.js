@@ -4,72 +4,45 @@ import '../css/login_register/login_register.css';
 import '../js/login';
 import '../js/file-input';
 
-import Signup from './Signup';
-import Login from './Login';
+import { connect } from 'react-redux'
 
-export default class header extends Component {
+import AuthService from './AuthService';
+
+class header extends Component {
+
     constructor(props) {
-        super(props);
-        this.state = {
-            status: true,
-            loginAndRegister: false
-        }
+        super(props)
+        this.Auth = new AuthService();
     }
 
-
-    trangthaiForm = () =>{
-        this.setState({
-            status: !this.state.status
-        })
-    }
-
-    trangthai_loginAndRegister = () =>{
-        this.setState({
-            loginAndRegister: !this.state.loginAndRegister
-        })
-    }
-
-    HienThiFrom = () =>{
-        if(this.state.loginAndRegister === true){
-            return <Signup></Signup>
-        } else {
-            return <Login></Login>
-        }
-    }
-
-    HienThi = () => {
-        if(this.state.status === false){
-            return ;
-
-        } else {
+    handleLogout(){
+        this.Auth.logout()
+        this.props.history.replace('/login');
+      }
+    
+    KiemTraState = () => {
+        if(this.Auth.loggedIn()){
             return (
-
-                <div className="form">
-                    <ul className="tab-group">
-                        <li className="tab ">
-                            <a href="#signup" onClick={() => this.trangthai_loginAndRegister()}>Đăng Ký</a>
-                        </li>
-                        <li className="tab active">
-                            <a href="#login" onClick={() => this.trangthai_loginAndRegister()}>Đăng Nhập</a>
-                        </li>
-                    </ul>
-                    <div className="tab-content">
-                        
-                        { this.HienThiFrom() }
-                        
-                    </div>
-                </div>
-
+                <a className="" href="/login" onClick={this.handleLogout.bind(this)}>
+                    Đăng Xuất <i className="fa fa-sign-out"></i>
+                </a>
             )
-        }
-    }
+        } else {
+            if(this.props.isEdit){
+                return (
+                    <a className="" href="/login" onClick={this.handleLogout.bind(this)}>
+                        Đăng Xuất <i className="fa fa-sign-out"></i>
+                    </a>
+                )
+            } else {
+                return 
+            }
+        }   
 
+    }
 
     render() {
-
         return (
-    
-
             <div className="header">
                 <div className="menu-box">
                     <div className="menu-btn">
@@ -85,9 +58,7 @@ export default class header extends Component {
                         
                     <div className="dang-xuat">
 
-                        <a className="" href="#/">
-                            Đăng Xuất <i className="fa fa-sign-out"></i>
-                        </a>
+                        { this.KiemTraState() }
         
                     </div>
 
@@ -97,3 +68,18 @@ export default class header extends Component {
         )
     }
 }
+
+const mapStateToProps = (state, ownProps) => {
+    return {
+      isEdit: state.isEdit
+    }
+  }
+  const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+      changeEditStatus: () => {
+        dispatch({type: "CHANGE_EDIT_STATUS"})
+      }
+    }
+  }
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(header)
