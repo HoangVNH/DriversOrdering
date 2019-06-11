@@ -27,6 +27,13 @@ export default class AuthService {
         })
     }
 
+    // ! Sửa thông tin driver
+    updateDriver(id, Name, PhoneNum, Address, Password){
+        return axios.post('/account/api/update', {id, Name, PhoneNum, Address, Password}).then(res => {
+            return Promise.resolve(res);
+        })
+    }
+
     loggedIn() {
         // Checks if there is a saved token and it's still valid
         const token = this.getToken()

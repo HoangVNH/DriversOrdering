@@ -86,17 +86,23 @@ function addAccount(name, phone, address, password) {
 }
 
 // ! Update Account === CHƯA XONG
-function updateAccount(id, name, phone, address, password) {
+function updateAccount(id, name, phone, address) {
     var defer = q.defer();
 
     account.findByIdAndUpdate({
         _id: id
     }, {
         $set: {
-            name: name,
-            phone: phone,
-            address: address,
-            password: password
+            userName: phone,
+            permission:{
+                name: name,
+                mobileNum: phone,
+                address: address,
+                motoImage: "hình 1",
+                licenseImage: "Hình 2",
+                avatar: "hình 3"
+            },
+            active: false
         }
     }, function (err, dulieu) {
         if (err) {

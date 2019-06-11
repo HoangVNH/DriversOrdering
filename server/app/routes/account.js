@@ -117,6 +117,23 @@ router.post('/api/getaccount', function(req, res){
     })
 })
 
+// TODO: Cập Nhật Dữ Liệu 1 account
+router.post('/api/update', function(req, res){
+
+    var user = req.body;
+    
+    const UserID = Account.updateAccount(user.id._id, user.Name, user.PhoneNum, user.Address);
+    UserID.then(function(data){
+        if(data){
+
+            res.send(data);
+
+        } else {
+            
+        }
+    })
+})
+
 
 router.get('/api/account/:_id', function (req, res) {
     Account.getAccountById(req.params._id, function (err, account) {

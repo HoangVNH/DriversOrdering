@@ -52,7 +52,7 @@ export default class BookingForm extends Component {
 	}
 	
 	render() {
-		var isLoggedin = this.state
+		
 		return (
 			<div>
 				<form>

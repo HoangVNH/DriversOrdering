@@ -21,12 +21,10 @@ export default class Edit_Info extends Component {
         this.Auth = new AuthService();
 
         this.state = {
-            datas: {},
             Name: '',
             PhoneNum: '',
             Address: '',
             Password: '',
-            RePassword: '',
             thongbao: null
         }
     }
@@ -41,16 +39,18 @@ export default class Edit_Info extends Component {
 
     handleFormSubmit(e){
         e.preventDefault();
-      
-        this.Auth.login(this.state.PhoneNum,this.state.Password)
-            .then(res =>{
-                if(res.headers.token){
-                    this.props.changeEditStatus();
-                    this.props.history.replace('/');
-                }
-                else {
+        const id = this.Auth.getProfile();
+        
+        this.Auth.updateDriver(id, this.state.Name ,this.state.PhoneNum, this.state.Address)
+            .then((res) =>{
+                if(res){
+                    alert("Cập Nhật Thành Công");
+                    this.props.history.replace('/info');
+
+                } else {
                     this.setState({ thongbao: res.data })
-                }      
+                }
+                
             })
             .catch(err =>{
                 alert(err);
@@ -79,7 +79,9 @@ export default class Edit_Info extends Component {
             var IdUser = profile._id;
             getData(IdUser).then((res) => {
                 this.setState({
-                    datas: res.permission
+                    Name: res.permission.name,
+                    PhoneNum: res.permission.mobileNum,
+                    Address: res.permission.address
                 })
             })
             
@@ -87,7 +89,7 @@ export default class Edit_Info extends Component {
     }
 
     render() {
-
+        
         return (
             <div className="info">
                 <header className="jumbotron">
@@ -162,32 +164,22 @@ export default class Edit_Info extends Component {
                     </div>
 
                     <div className="col-md-12 mb-5">
-                        <form id="survey-form">
+                        <form  onSubmit={this.handleFormSubmit} id="survey-form">
                             <h3 className="title mb-4 text-center"> Chỉnh Sửa Thông Tin Của Bạn </h3>
 
                             <div className="form-group">
                                 <label>Họ Tên</label>
-                                <input defaultValue={this.state.datas.name} onChange={(event) => {this.onHandleChange(event)}} className="form-control text-danger" type="text"  placeholder="Họ tên" />
+                                <input defaultValue={this.state.Name} onChange={(event) => {this.onHandleChange(event)}} name="Name" className="form-control text-danger" type="text"  placeholder="Họ tên" />
                             </div>
 
                             <div className="form-group">
                                 <label>Số Điện Thoại</label>
-                                <input defaultValue={this.state.datas.mobileNum} onChange={(event) => {this.onHandleChange(event)}} className="form-control text-danger" type="text"  placeholder="Số điện thoại" />
+                                <input defaultValue={this.state.PhoneNum} onChange={(event) => {this.onHandleChange(event)}} name="PhoneNum" className="form-control text-danger" type="text"  placeholder="Số điện thoại" />
                             </div>
 
                             <div className="form-group">
                                 <label>Địa Chỉ</label>
-                                <input defaultValue={this.state.datas.address} onChange={(event) => {this.onHandleChange(event)}} className="form-control text-danger" type="text"  placeholder="Địa chỉ" />
-                            </div>
-
-                            <div className="form-group">
-                                <label>Mật Khẩu</label>
-                                <input onChange={(event) => {this.onHandleChange(event)}} className="form-control text-danger" type="password"  placeholder="Nhập mật khẩu mới" />
-                            </div>
-                            
-                            <div className="form-group">
-                                <label>Nhập Lại Mật Khẩu</label>
-                                <input onChange={(event) => {this.onHandleChange(event)}} className="form-control text-danger" type="password" placeholder="Nhập lại mật khẩu" />
+                                <input defaultValue={this.state.Address} onChange={(event) => {this.onHandleChange(event)}} name="Address" className="form-control text-danger" type="text"  placeholder="Địa chỉ" />
                             </div>
 
                             <p style={{color: "red"}}> { this.ThongBaoLoi() } </p>                        
