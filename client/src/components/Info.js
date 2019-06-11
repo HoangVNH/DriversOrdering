@@ -7,7 +7,73 @@ import '../css/lightBox/lightbox.css';
 import '../js/lightbox-plus-jquery';
 import '../js/file-inputs';
 
+import AuthService from './AuthService';
+import axios  from 'axios';
+
+const getData = (PhoneNum) =>  axios.get('/account/api/getaccount' , {PhoneNum}).then((res) => res.data);
+
 export default class Edit_Info extends Component {
+
+    constructor(props) {
+        super(props);
+        this.onHandleChange = this.onHandleChange.bind(this);
+        this.handleFormSubmit = this.handleFormSubmit.bind(this);
+        this.Auth = new AuthService();
+
+        this.state = {
+            Name: '',
+            PhoneNum: '',
+            Address: '',
+            Password: '',
+            RePassword: '',
+            thongbao: null
+        }
+    }
+    
+    onHandleChange = (event) => {
+        var name = event.target.name;
+        var value = event.target.value;
+        this.setState({
+            [name] : value
+        });
+    }
+
+    handleFormSubmit(e){
+        e.preventDefault();
+      
+        this.Auth.login(this.state.PhoneNum,this.state.Password)
+            .then(res =>{
+                if(res.headers.token){
+                    this.props.changeEditStatus();
+                    this.props.history.replace('/');
+                }
+                else {
+                    this.setState({ thongbao: res.data })
+                }      
+            })
+            .catch(err =>{
+                alert(err);
+            })
+    }
+
+    ThongBaoLoi = () =>{
+        if(this.state.thongbao){
+
+            return this.state.thongbao;
+
+        } else {
+            return
+        }
+    }
+
+
+    componentWillMount(){
+        if(!this.Auth.loggedIn()){
+            this.props.history.replace('/login');
+        } else {
+            
+        }
+    }
 
     render() {
         return (
@@ -88,24 +154,26 @@ export default class Edit_Info extends Component {
                             <h5 className="title"> Chỉnh Sửa Thông Tin Của Bạn </h5>
 
                             <div className="form-group d-flex">
-                            <input className="form-control" type="text"  placeholder="Họ tên" />
+                                <input onChange={(event) => {this.onHandleChange(event)}} className="form-control" type="text"  placeholder="Họ tên" />
                             </div>
 
                             <div className="form-group d-flex">
-                            <input className="form-control" type="text"  placeholder="Số điện thoại" />
+                                <input onChange={(event) => {this.onHandleChange(event)}} className="form-control" type="text"  placeholder="Số điện thoại" />
                             </div>
 
                             <div className="form-group d-flex">
-                            <input className="form-control" type="text"  placeholder="Địa chỉ" />
+                                <input onChange={(event) => {this.onHandleChange(event)}} className="form-control" type="text"  placeholder="Địa chỉ" />
                             </div>
 
                             <div className="form-group d-flex">
-                            <input className="form-control" type="password"  placeholder="Nhập mật khẩu mới" />
+                                <input onChange={(event) => {this.onHandleChange(event)}} className="form-control" type="password"  placeholder="Nhập mật khẩu mới" />
                             </div>
                             
                             <div className="form-group d-flex">
-                                <input className="form-control" type="password" placeholder="Nhập lại mật khẩu" />
-                            </div>                            
+                                <input onChange={(event) => {this.onHandleChange(event)}} className="form-control" type="password" placeholder="Nhập lại mật khẩu" />
+                            </div>
+
+                            <p style={{color: "red"}}> { this.ThongBaoLoi() } </p>                        
 
                             <button className="btn btn-danger pull-right" id="submit">
                                 Lưu Thông Tin <i className="fa fa-check"></i>

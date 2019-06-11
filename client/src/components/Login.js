@@ -133,7 +133,10 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
 return {
     changeEditStatus: () => {
-    dispatch({type: "CHANGE_EDIT_STATUS"})
+        dispatch({type: "CHANGE_EDIT_STATUS"})
+    },
+    getUser: (PhoneNum) => {
+        dispatch({type: "PHONE_USER", PhoneNum})
     }
 }
 } 

@@ -100,6 +100,24 @@ router.post("/api/signup", function (req, res) {
 
 })
 
+// TODO: Lấy Dữ Liệu 1 account
+router.get('/api/getaccount', function(req, res){
+    var user = req.body;
+
+    const PhoneExist = Account.getAccountByPhone(user.PhoneNum);
+    
+    PhoneExist.then(function(data){
+        if(data){
+            console.log(data);
+            
+            
+        } else {
+            
+        }
+    })
+})
+
+
 router.get('/api/account/:_id', function (req, res) {
     Account.getAccountById(req.params._id, function (err, account) {
         if (err) {
