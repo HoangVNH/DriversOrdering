@@ -7,7 +7,8 @@ export default class BookingForm extends Component {
 		super(props);
 		this.state = { 
 			pickAddress: '',
-			dropAddress: ''
+			dropAddress: '',
+			isLoggedin: false
 		};
 	}
 	
@@ -38,8 +39,19 @@ export default class BookingForm extends Component {
 			})
 			.catch(error => console.log('Error Drop address ', error));
 	};
+
+	onClickOrderBtn = event => {
+		event.preventDefault();
+		console.log("onClickOrderBtn");
+		if (!this.state.isLoggedin) {
+			this.setState({
+				isLoggedin: true
+			});
+		}
+	}
 	
 	render() {
+		var isLoggedin = this.state
 		return (
 			<div>
 				<form>
@@ -123,9 +135,24 @@ export default class BookingForm extends Component {
 						)}
 					</PlacesAutocomplete>
 				
-					<button className="btn btn-info tim-kiem">Đặt Xe </button>
+					<button
+						className="btn btn-info tim-kiem" 
+						onClick = {this.onClickOrderBtn}>
+						Đặt Xe
+					</button>
 
 				</form>
+
+				{
+					(!!!isLoggedin) && (
+						<form>
+							<input placeholder="Nhập số điện thoại" />
+							<button>
+								Hoàn Tất
+							</button>
+						</form>
+					)
+				}
 			</div>
 		);
 	}
