@@ -91,4 +91,12 @@
   font-size: 18px;
   color: #b11a33;
 }
+
+.modal-backdrop.show {
+  z-index: 0;
+}
+
+.modal-title {
+  color: #b11a33;
+}
 /*# sourceMappingURL=searchBar.css.map */

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import '../css/search/searchBar.css';
+import '../js/file-phone';
 
 export default class BookingForm extends Component {
 	constructor(props) {
@@ -136,23 +137,41 @@ export default class BookingForm extends Component {
 					</PlacesAutocomplete>
 				
 					<button
+						data-toggle="modal" data-target="#showModal"
 						className="btn btn-info tim-kiem" 
 						onClick = {this.onClickOrderBtn}>
 						Đặt Xe
 					</button>
-
 				</form>
 
-				{
-					(!!!isLoggedin) && (
-						<form>
-							<input placeholder="Nhập số điện thoại" />
-							<button>
-								Hoàn Tất
+
+			<div className="modal fade" id="showModal" tabIndex={-1} role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+				<form>
+					<div className="modal-dialog modal-dialog-centered" role="document">
+						<div className="modal-content">
+						<div className="modal-header">
+							<h5 className="modal-title" id="exampleModalCenterTitle">Nhập Số Điện Thoại Của Bạn</h5>
+							<button type="button" className="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">×</span>
 							</button>
-						</form>
-					)
-				}
+						</div>
+						<div className="modal-body">
+							
+							<div className="form-group d-flex">
+								<input className="form-control" type="tel"  placeholder="Số điện thoại" />
+							</div>
+							
+						</div>
+						<div className="modal-footer">
+							<button type="button" className="btn btn-dark" data-dismiss="modal">Đóng</button>
+							<button type="button" className="btn btn-danger">Hoàn Tất</button>
+						</div>
+						</div>
+					</div>
+				</form>
+			</div>
+
+
 			</div>
 		);
 	}

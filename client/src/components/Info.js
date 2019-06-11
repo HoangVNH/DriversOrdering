@@ -71,7 +71,7 @@ export default class Edit_Info extends Component {
         if(!this.Auth.loggedIn()){
             this.props.history.replace('/login');
         } else {
-            
+
         }
     }
 
