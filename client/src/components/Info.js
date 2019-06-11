@@ -10,8 +10,6 @@ import '../js/file-inputs';
 import AuthService from './AuthService';
 import axios  from 'axios';
 
-const Auths = new AuthService();
-const profile = Auths.getProfile()
 const getData = (idUser) =>  axios.post('/account/api/getaccount',{idUser}).then((res) => res.data).catch((err) => err);
 
 export default class Edit_Info extends Component {
@@ -74,7 +72,11 @@ export default class Edit_Info extends Component {
         if(!this.Auth.loggedIn()){
             this.props.history.replace('/login');
         } else {
-            var IdUser = profile._id
+            
+            const Auths = new AuthService();
+            const profile = Auths.getProfile();
+
+            var IdUser = profile._id;
             getData(IdUser).then((res) => {
                 this.setState({
                     datas: res.permission
@@ -178,11 +180,13 @@ export default class Edit_Info extends Component {
                                 <input defaultValue={this.state.datas.address} onChange={(event) => {this.onHandleChange(event)}} className="form-control text-danger" type="text"  placeholder="Địa chỉ" />
                             </div>
 
-                            <div className="form-group d-flex">
+                            <div className="form-group">
+                                <label>Mật Khẩu</label>
                                 <input onChange={(event) => {this.onHandleChange(event)}} className="form-control text-danger" type="password"  placeholder="Nhập mật khẩu mới" />
                             </div>
                             
-                            <div className="form-group d-flex">
+                            <div className="form-group">
+                                <label>Nhập Lại Mật Khẩu</label>
                                 <input onChange={(event) => {this.onHandleChange(event)}} className="form-control text-danger" type="password" placeholder="Nhập lại mật khẩu" />
                             </div>
 
