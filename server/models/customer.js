@@ -1,26 +1,27 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 // Customer Schema 
-var customerSchema = mongoose.Schema({
-    mobileNum:{
+const CustomerSchema = new Schema({
+    mobilenum:{
         type: String,
         require: true
     }
 });
 
-var Customer = module.exports = mongoose.model('Customer', customerSchema);
+const Customer = module.exports = mongoose.model('customers', CustomerSchema);
 
-// Get Customers
-module.exports.getCustomer = function(callback, limit){
-    Customer.find(callback).limit(limit);
-}
+// // Get Customers
+// module.exports.getCustomer = function(callback, limit){
+//     Customer.find(callback).limit(limit);
+// }
 
-// Get Customer
-module.exports.getCustomerById = function(customer, limit){
-    Customer.findById(id, callback);
-}
+// // Get Customer
+// module.exports.getCustomerById = function(customer, limit){
+//     Customer.findById(id, callback);
+// }
 
-// Add Customer
-module.exports.addCustomer = function(customer, callback){
-    Customer.create(customer, callback);
-}
+// // Add Customer
+// module.exports.addCustomer = function(customer, callback){
+//     Customer.create(customer, callback);
+// }
