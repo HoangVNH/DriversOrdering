@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import '../css/search/searchBar.css';
+import '../js/file-phone';
 
 export default class BookingForm extends Component {
 	constructor(props) {

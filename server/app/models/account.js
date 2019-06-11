@@ -36,6 +36,26 @@ function getAccountByPhone(phone) {
     }
 }
 
+// ! Get AccountID === XONG
+function getAccountByID(id) {
+    if(id){
+        var defer = q.defer();
+        account.findOne({ _id: id }, function (err, dulieu) {
+            if (err) {
+                defer.reject(err);
+
+            } else {
+
+                defer.resolve(dulieu);
+            }
+        })
+        return defer.promise;
+    } else {
+        return false;
+    }
+}
+
+
 // ! Add Account  === XONG
 function addAccount(name, phone, address, password) {
     var defer = q.defer();
@@ -95,5 +115,6 @@ module.exports = {
     getAccount: getAccount,
     getAccountByPhone: getAccountByPhone,
     addAccount: addAccount,
-    updateAccount: updateAccount
+    updateAccount: updateAccount,
+    getAccountByID: getAccountByID
 }

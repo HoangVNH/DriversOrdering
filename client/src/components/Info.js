@@ -10,7 +10,9 @@ import '../js/file-inputs';
 import AuthService from './AuthService';
 import axios  from 'axios';
 
-const getData = (PhoneNum) =>  axios.get('/account/api/getaccount' , {PhoneNum}).then((res) => res.data);
+const Auths = new AuthService();
+const profile = Auths.getProfile()
+const getData = (idUser) =>  axios.post('/account/api/getaccount',{idUser}).then((res) => res.data).catch((err) => err);
 
 export default class Edit_Info extends Component {
 
@@ -21,6 +23,7 @@ export default class Edit_Info extends Component {
         this.Auth = new AuthService();
 
         this.state = {
+            datas: {},
             Name: '',
             PhoneNum: '',
             Address: '',
@@ -71,11 +74,18 @@ export default class Edit_Info extends Component {
         if(!this.Auth.loggedIn()){
             this.props.history.replace('/login');
         } else {
-
+            var IdUser = profile._id
+            getData(IdUser).then((res) => {
+                this.setState({
+                    datas: res.permission
+                })
+            })
+            
         }
     }
 
     render() {
+
         return (
             <div className="info">
                 <header className="jumbotron">
@@ -97,11 +107,11 @@ export default class Edit_Info extends Component {
                             </a>
                             <form>
                                 <div className="thaydoi">
-                                    <label htmlFor="file" className="file_labels">
+                                    <label htmlFor="file1" className="file_labels">
                                         <i className="fa fa-upload" aria-hidden="true"></i>
                                         Chọn ảnh
                                     </label>
-                                    <input id="file" type="file" name="file" />
+                                    <input id='file1' type="file" name="avatar" />
                                 </div>
 
                                 <button className="btn btn-warning btn-block">Thay đổi <i className="fa fa-check"></i></button>
@@ -117,11 +127,11 @@ export default class Edit_Info extends Component {
                             </a>
                             <form>
                                 <div className="thaydoi">
-                                    <label htmlFor="file" className="file_labels">
+                                    <label htmlFor="file2" className="file_labels">
                                         <i className="fa fa-upload" aria-hidden="true"></i>
                                         Chọn ảnh
                                     </label>
-                                    <input id="file" type="file" name="file" />
+                                    <input id='file2' type="file" name="licenseImage" />
                                 </div>
 
                                 <button className="btn btn-warning btn-block">Thay đổi <i className="fa fa-check"></i></button>
@@ -137,11 +147,11 @@ export default class Edit_Info extends Component {
                             </a>
                             <form>
                                 <div className="thaydoi">
-                                    <label htmlFor="file" className="file_labels">
+                                    <label htmlFor="file3" className="file_labels">
                                         <i className="fa fa-upload" aria-hidden="true"></i>
                                         Chọn ảnh
                                     </label>
-                                    <input id="file" type="file" name="file" />
+                                    <input id='file3' type="file" name="motoImage" />
                                 </div>
 
                                 <button className="btn btn-warning btn-block">Thay đổi <i className="fa fa-check"></i></button>
@@ -151,26 +161,29 @@ export default class Edit_Info extends Component {
 
                     <div className="col-md-12 mb-5">
                         <form id="survey-form">
-                            <h5 className="title"> Chỉnh Sửa Thông Tin Của Bạn </h5>
+                            <h3 className="title mb-4 text-center"> Chỉnh Sửa Thông Tin Của Bạn </h3>
 
-                            <div className="form-group d-flex">
-                                <input onChange={(event) => {this.onHandleChange(event)}} className="form-control" type="text"  placeholder="Họ tên" />
+                            <div className="form-group">
+                                <label>Họ Tên</label>
+                                <input defaultValue={this.state.datas.name} onChange={(event) => {this.onHandleChange(event)}} className="form-control text-danger" type="text"  placeholder="Họ tên" />
+                            </div>
+
+                            <div className="form-group">
+                                <label>Số Điện Thoại</label>
+                                <input defaultValue={this.state.datas.mobileNum} onChange={(event) => {this.onHandleChange(event)}} className="form-control text-danger" type="text"  placeholder="Số điện thoại" />
+                            </div>
+
+                            <div className="form-group">
+                                <label>Địa Chỉ</label>
+                                <input defaultValue={this.state.datas.address} onChange={(event) => {this.onHandleChange(event)}} className="form-control text-danger" type="text"  placeholder="Địa chỉ" />
                             </div>
 
                             <div className="form-group d-flex">
-                                <input onChange={(event) => {this.onHandleChange(event)}} className="form-control" type="text"  placeholder="Số điện thoại" />
-                            </div>
-
-                            <div className="form-group d-flex">
-                                <input onChange={(event) => {this.onHandleChange(event)}} className="form-control" type="text"  placeholder="Địa chỉ" />
-                            </div>
-
-                            <div className="form-group d-flex">
-                                <input onChange={(event) => {this.onHandleChange(event)}} className="form-control" type="password"  placeholder="Nhập mật khẩu mới" />
+                                <input onChange={(event) => {this.onHandleChange(event)}} className="form-control text-danger" type="password"  placeholder="Nhập mật khẩu mới" />
                             </div>
                             
                             <div className="form-group d-flex">
-                                <input onChange={(event) => {this.onHandleChange(event)}} className="form-control" type="password" placeholder="Nhập lại mật khẩu" />
+                                <input onChange={(event) => {this.onHandleChange(event)}} className="form-control text-danger" type="password" placeholder="Nhập lại mật khẩu" />
                             </div>
 
                             <p style={{color: "red"}}> { this.ThongBaoLoi() } </p>                        

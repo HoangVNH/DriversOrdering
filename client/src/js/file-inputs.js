@@ -10,4 +10,34 @@ $(document).ready(function () {
             $(".file_labels").text(fileName);
         }
     });
+
+    $("#file1").on("change", function (e) {
+        var files = $(this)[0].files;
+        if (files.length >= 2) {
+            $(".file_labels").text(files.length + " ảnh đã chọn");
+        } else {
+            var fileName = e.target.value.split("\\").pop();
+            $(".file_labels").text(fileName);
+        }
+    });
+
+    $("#file2").on("change", function (e) {
+        var files = $(this)[0].files;
+        if (files.length >= 2) {
+            $(".file_labels").text(files.length + " ảnh đã chọn");
+        } else {
+            var fileName = e.target.value.split("\\").pop();
+            $(".file_labels").text(fileName);
+        }
+    });
+
+    $("#file3").on("change", function (e) {
+        var files = $(this)[0].files;
+        if (files.length >= 2) {
+            $(".file_labels").text(files.length + " ảnh đã chọn");
+        } else {
+            var fileName = e.target.value.split("\\").pop();
+            $(".file_labels").text(fileName);
+        }
+    });
 });
