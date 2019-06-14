@@ -1,15 +1,18 @@
 /* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
 
+import AuthService from '../AuthService';
 import axios  from 'axios';
+import Driver from './Driver';
 
-const getListDrive = () =>  axios.get('/account/api').then((res) => res.data);
+const getListDrive = () =>  axios.get('/account/api').then((res) => res.data).catch((err) => err);
 // const activeDrive = (active) => axios.post('/account/api/active', {active}).then((res) => res.data);
 
 class ListDriver extends Component {
 
     constructor(props) {
         super(props)
+        this.Auth = new AuthService();
         this.state = {
             datas: null,
             Name: "",
@@ -25,8 +28,34 @@ class ListDriver extends Component {
     
     // ! lấy dữ liệu xuống trước khi render
     componentWillMount() {
-        if(this.state.datas === null){
-            getListDrive().then((res) => { this.setState({ datas: res })})
+        if(!this.Auth.loggedIn()){
+            this.props.history.replace('/login');
+        } else {
+
+            const Auths = new AuthService();
+
+            getListDrive().then((res) => {
+                this.setState({
+                    datas: res
+                })
+            })
+        }
+    }
+
+    printData = () => {
+        if(this.state.datas !== null){
+            return this.state.datas.map((value, key) =>{
+                return (
+                    <Driver
+                        key={key}
+                        id={key}
+                        drive_name={value.permission.name}
+                        drive_phone={value.permission.mobileNum}
+                        drive_address={value.permission.address}
+                        drive_active={value.active}
+                    ></Driver>        
+                )
+            })
         }
     }
     
@@ -48,72 +77,14 @@ class ListDriver extends Component {
                             <th>Họ Tên</th>
                             <th>Số Điện Thoại</th>
                             <th>Địa Chỉ</th>
-                            <th>Mật Khẩu</th>
                             <th>Thông Tin Xe</th>
                             <th>Trạng Thái</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                            <td>Trần Phạm Hoàng Nam</td>
-                            <td>0123 345 566</td>
-                            <td>227 Nguyễn Văn Cừ, Q5</td>
-                            <td>DJKSYFFGFW</td>
-                            <td>
-                                <a className="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-1.jpg" data-lightbox="example-1">
-                                <img width={50} className="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-1.jpg" alt="anh22" />
-                                </a>
-                                <a className="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-1.jpg" data-lightbox="example-1">
-                                <img width={50} className="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-1.jpg" alt="anh22" />
-                                </a>
-                                <a className="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-1.jpg" data-lightbox="example-1">
-                                <img width={50} className="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-1.jpg" alt="anh22" />
-                                </a>
-                            </td>
-                            <td>
-                                <button className="btn btn-success">Kích Hoạt</button>
-                            </td>
-                            </tr>
-                            <tr>
-                            <td>Trần Phạm Hoàng Nam</td>
-                            <td>0123 345 566</td>
-                            <td>227 Nguyễn Văn Cừ, Q5</td>
-                            <td>DJKSYFFGFW</td>
-                            <td>
-                                <a className="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-1.jpg" data-lightbox="example-1">
-                                <img width={50} className="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-1.jpg" alt="anh22" />
-                                </a>
-                                <a className="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-1.jpg" data-lightbox="example-1">
-                                <img width={50} className="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-1.jpg" alt="anh22" />
-                                </a>
-                                <a className="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-1.jpg" data-lightbox="example-1">
-                                <img width={50} className="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-1.jpg" alt="anh22" />
-                                </a>
-                            </td>
-                            <td>
-                                <button className="btn btn-success">Kích Hoạt</button>
-                            </td>
-                            </tr>
-                            <tr>
-                            <td>Trần Phạm Hoàng Nam</td>
-                            <td>0123 345 566</td>
-                            <td>227 Nguyễn Văn Cừ, Q5</td>
-                            <td>DJKSYFFGFW</td>
-                            <td>
-                                <a className="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-1.jpg" data-lightbox="example-1">
-                                <img width={50} className="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-1.jpg" alt="anh22" />
-                                </a>
-                                <a className="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-1.jpg" data-lightbox="example-1">
-                                <img width={50} className="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-1.jpg" alt="anh22" />
-                                </a>
-                                <a className="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-1.jpg" data-lightbox="example-1">
-                                <img width={50} className="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-1.jpg" alt="anh22" />
-                                </a>
-                            </td>
-                            <td>
-                                <button className="btn btn-success">Kích Hoạt</button>
-                            </td>
-                            </tr>
+
+                            {this.printData()}
+
                         </tbody>
                         </table>
                     </div>
