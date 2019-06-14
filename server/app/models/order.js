@@ -82,9 +82,53 @@ function updateOrder(id, idDriver, customerMobileNum, status) {
     return defer.promise;
 }
 
+
+function statisticOrderByAdmin(day1, day2=null){
+    var defer = q.defer();
+    
+    const query = !day2 ? {
+        $gte: new ISODate(day1),
+        $lt: new ISODate(day2)
+    } : new ISD(day1);
+
+    account.find({
+        created_at: query
+    }, function(err, dulieu) {
+        if (err) {
+            defer.reject(err);
+        } else {
+            defer.resolve(dulieu);
+        }
+    })
+    return defer.promise;
+}
+
+function statisticOrderByDriver(id, day1, day2=null){
+    var defer = q.defer();
+    
+    const query = !day2 ? {
+        $gte: new ISODate(day1),
+        $lt: new ISODate(day2)
+    } : new ISD(day1);
+
+    account.find({
+        _id: id,
+        created_at: query
+    }, function(err, dulieu) {
+        if (err) {
+            defer.reject(err);
+        } else {
+            defer.resolve(dulieu);
+        }
+    })
+    return defer.promise;
+}
+
 module.exports = {
     getOrder: getOrder,
     getOrderById: getOrderById,
     addOrder: addOrder,
-    updateOrder: updateOrder
+    updateOrder: updateOrder,
+    statisticOrderByAdmin: statisticOrderByAdmin,
+    statisticOrderByDriver: statisticOrderByDriver
 }

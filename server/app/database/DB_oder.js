@@ -10,9 +10,17 @@ var orderSchema = mongoose.Schema({
         type: String,
         require: true
     },
+    price: {
+        type: Int32Array,
+        require: true
+    },
     status: {
         type: Boolean,
         default: false
+    },
+    created_at: {
+        type: Date,
+        default: Date.now()
     }
 }, { collection: "order" });
 
