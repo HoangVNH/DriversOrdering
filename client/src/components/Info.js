@@ -106,9 +106,11 @@ export default class Edit_Info extends Component {
                     <div className="col-md-4">
                         <div className="form-hinhanh">
                             <h5 className="title">Thay đổi ảnh đại diện</h5>
+                            
                             <a className="example-image-link" href="https://via.placeholder.com/600x350" data-lightbox="example-1">
                                 <img className="example-image" src="https://via.placeholder.com/600x350" alt="anh22" />
                             </a>
+
                             <form>
                                 <div className="thaydoi">
                                     <label htmlFor="file1" className="file_labels">
@@ -120,15 +122,18 @@ export default class Edit_Info extends Component {
 
                                 <button className="btn btn-warning btn-block">Thay đổi <i className="fa fa-check"></i></button>
                             </form>
+
                         </div>
                     </div>
 
                     <div className="col-md-4">
                         <div className="form-hinhanh">
                             <h5 className="title">Thay đổi biển số xe</h5>
+
                             <a className="example-image-link" href="https://via.placeholder.com/600x350" data-lightbox="example-1">
                                 <img className="example-image" src="https://via.placeholder.com/600x350" alt="anh22" />
                             </a>
+
                             <form>
                                 <div className="thaydoi">
                                     <label htmlFor="file2" className="file_labels">
@@ -140,15 +145,18 @@ export default class Edit_Info extends Component {
 
                                 <button className="btn btn-warning btn-block">Thay đổi <i className="fa fa-check"></i></button>
                             </form>
+
                         </div>
                     </div>
 
                     <div className="col-md-4">
                         <div className="form-hinhanh">
                             <h5 className="title">Thay đổi hình ảnh xe</h5>
+
                             <a className="example-image-link" href="https://via.placeholder.com/600x350" data-lightbox="example-1">
                                 <img className="example-image" src="https://via.placeholder.com/600x350" alt="anh22" />
                             </a>
+
                             <form>
                                 <div className="thaydoi">
                                     <label htmlFor="file3" className="file_labels">
@@ -160,6 +168,7 @@ export default class Edit_Info extends Component {
 
                                 <button className="btn btn-warning btn-block">Thay đổi <i className="fa fa-check"></i></button>
                             </form>
+                            
                         </div>
                     </div>
 
