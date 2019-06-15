@@ -7,7 +7,6 @@ import BookingForm from './BookingForm';
 import "../js/nav";
 
 Geocode.setApiKey(`${GLOBAL.API_KEY}`);
-// Geocode.enableDebug();
 
 export default class AsyncMap extends Component {
 
@@ -29,7 +28,6 @@ export default class AsyncMap extends Component {
 	}
 
 	componentDidMount() {
-		console.log("componentDidMount AsyncMap");
 		Geocode.fromLatLng( this.state.mapPosition.lat, this.state.mapPosition.lng ).then(response => {
 			const address = response.results[0].formatted_address;
 			this.setState({
@@ -79,6 +77,7 @@ export default class AsyncMap extends Component {
 			withGoogleMap (
 				props => (
 					<GoogleMap
+						google={ this.props.google }
 						defaultZoom={this.state.zoom}
 						defaultCenter={{ lat: this.state.mapPosition.lat, lng: this.state.mapPosition.lng }}
 						defaultOptions={{
@@ -103,6 +102,7 @@ export default class AsyncMap extends Component {
 							}}>
 						
 							<BookingForm
+								google = { this.props.google }
 								style={{
 									width: '100%',
 									height: '40px',
