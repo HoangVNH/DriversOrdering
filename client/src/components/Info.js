@@ -8,9 +8,10 @@ import '../js/lightbox-plus-jquery';
 import '../js/file-inputs';
 
 import AuthService from './AuthService';
-import axios  from 'axios';
+import axios, { post } from 'axios';
 
 const getData = (idUser) =>  axios.post('/account/api/getaccount',{idUser}).then((res) => res.data).catch((err) => err);
+const upImage = (avatar) =>  axios.post('/account/api/upload',{avatar}).then((res) => res.data).catch((err) => err);
 
 export default class Edit_Info extends Component {
 
@@ -21,12 +22,29 @@ export default class Edit_Info extends Component {
         this.Auth = new AuthService();
 
         this.state = {
-            Name: '',
-            PhoneNum: '',
-            Address: '',
-            Password: '',
-            thongbao: null
+            Avatar: null
         }
+    }
+
+    handleFile = (e) => {
+        const file = e.target.files[0];
+        this.setState({
+            Avatar: file
+        })
+    }
+
+    handleUpload = (e) => {
+        e.preventDefault();
+        const avatar = this.state.Avatar;
+        const formData = new FormData();
+
+        formData.append('image', avatar);
+        formData.append('name', 'image Drive');
+
+        upImage(formData).then((res) => {
+            console.log(res);
+            
+        })
     }
     
     onHandleChange = (event) => {
@@ -116,13 +134,13 @@ export default class Edit_Info extends Component {
                                 <img className="example-image" src="https://via.placeholder.com/600x350" alt="anh22" />
                             </a>
 
-                            <form>
+                            <form onSubmit={this.handleUpload}>
                                 <div className="thaydoi">
                                     <label htmlFor="file1" className="file_labels">
                                         <i className="fa fa-upload" aria-hidden="true"></i>
                                         Chọn ảnh
                                     </label>
-                                    <input id='file1' type="file" name="avatar" />
+                                    <input onChange={(e) => this.handleFile(e)} name="avatar" id='file1' type="file"/>
                                 </div>
 
                                 <button className="btn btn-warning btn-block">Thay đổi <i className="fa fa-check"></i></button>
@@ -145,7 +163,7 @@ export default class Edit_Info extends Component {
                                         <i className="fa fa-upload" aria-hidden="true"></i>
                                         Chọn ảnh
                                     </label>
-                                    <input id='file2' type="file" name="licenseImage" />
+                                    <input id='file2' type="file" />
                                 </div>
 
                                 <button className="btn btn-warning btn-block">Thay đổi <i className="fa fa-check"></i></button>
@@ -168,7 +186,7 @@ export default class Edit_Info extends Component {
                                         <i className="fa fa-upload" aria-hidden="true"></i>
                                         Chọn ảnh
                                     </label>
-                                    <input id='file3' type="file" name="motoImage" />
+                                    <input id='file3' type="file" />
                                 </div>
 
                                 <button className="btn btn-warning btn-block">Thay đổi <i className="fa fa-check"></i></button>

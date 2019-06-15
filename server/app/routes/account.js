@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-
+const multer = require('multer');
 const jwt = require('jsonwebtoken');
 const helper = require("../helpers/helper"); // mã hóa password
 const { register_Valida, login_Valida } = require('../validation/validation'); // vadidation
@@ -132,6 +132,38 @@ router.post('/api/update', function(req, res){
     })
 })
 
+// khai báo đường dẫn lưu trữ
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, '../../static/uploads');
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + '-' + file.originalname );
+  }
+})
+
+// check files up lên
+function checkFileUpload (req, file, cb) {
+
+  if(!file.originalname.match(/\.(jpg|png|gif|jpeg)$/))
+  {
+    cb(new Error('Bạn chỉ được upload file ảnh'));
+  }
+  else
+  {
+    cb(null, true); // OK
+  }
+}
+
+var upload = multer({ storage: storage, fileFilter: checkFileUpload })
+
+
+router.post('/api/upload', upload.single('avatar') ,function(req, res, next) {
+  res.send("Đã nhập được dữ liệu");
+});
+
+
+
 // TODO: Cập Nhật Trạng Thái 1 account
 router.post('/api/getaccount/drive', function (req, res) {
     var id = req.body.id;
@@ -155,17 +187,6 @@ router.post('/api/getaccount/drive', function (req, res) {
             
         }
     })
-});
-
-
-
-router.get('/api/account/:_id', function (req, res) {
-    Account.getAccountById(req.params._id, function (err, account) {
-        if (err) {
-            throw err;
-        }
-        res.json(account);
-    });
 });
 
 
