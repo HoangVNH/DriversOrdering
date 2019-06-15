@@ -21,6 +21,7 @@ function getAccount() {
 function getAccountByPhone(phone) {
     if(phone){
         var defer = q.defer();
+        account.
         account.findOne({ userName: phone }, function (err, dulieu) {
             if (err) {
                 defer.reject(err);

@@ -11,9 +11,10 @@ export default class BookingForm extends Component {
 			latLngPick: [],
 			dropAddress: '',
 			latLngDrop: [],
-			price: 1,
+			price:0,
 			distance: 0,
-			isEnterPhoneNum: false
+			isEnterPhoneNum: false,
+			phoneNum: ''
 		};
 	}
 
@@ -75,14 +76,10 @@ export default class BookingForm extends Component {
 	onClickCancelBtn = event => {
 		event.preventDefault();
 		console.log("onClickCancelBtn");
-		if (this.state.isEnterPhoneNum === false) 
+		if (this.state.isEnterPhoneNum === true) 
 			this.setState({ isEnterPhoneNum: false });
 	}
 
-	changeClassName = () => {
-		
-	}
-	
 	render() {
 		
 		let isEnterPhoneNum  = this.state.isEnterPhoneNum;
@@ -170,36 +167,20 @@ export default class BookingForm extends Component {
 						)}
 					</PlacesAutocomplete>
 
-					{					 
-						(this.state.latLngPick && this.state.latLngDrop) && (
-							
-							<div className="showInfoCheck">
-								<div className="price">
-									<h4>{this.state.price} KM</h4>
-								</div>
-								<div className="khoangcach">
-									<h4>{this.state.distance} <span>VNĐ</span></h4>
-								</div>
-							</div>
-						)
-					}
-
-					{
-						(!this.state.latLngPick && !this.state.latLngDrop) && (
+				
 							
 							<div className="showInfo">
 								<div className="price">
-									<h4>{this.state.price} KM</h4>
+									<h4>{this.state.distance} </h4>
 								</div>
 								<div className="khoangcach">
-									<h4>{this.state.distance} <span>VNĐ</span></h4>
+									<h4>{(this.state.price).toFixed(0)}<span>VNĐ</span></h4>
 								</div>
 							</div>
-						)
-					}
+						
 				
 					{
-						(this.state.isEnterPhoneNum && 
+						(isEnterPhoneNum && 
 							(<button
 								className="btn btn-info tim-kiem"
 								onClick={this.onClickCancelBtn} >
@@ -208,7 +189,7 @@ export default class BookingForm extends Component {
 					}
 
 					{
-						(!this.state.isEnterPhoneNum && 
+						(!isEnterPhoneNum && 
 							(<button
 								data-toggle="modal" data-target="#showModal"
 								className="btn btn-info tim-kiem"

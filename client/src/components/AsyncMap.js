@@ -23,7 +23,7 @@ export default class AsyncMap extends Component {
 				lat: this.props.center.lat,
 				lng: this.props.center.lng
 			},
-			zoom: 13
+			zoom: 17
 		}
 	}
 
