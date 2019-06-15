@@ -12,7 +12,6 @@ export default class BookingForm extends Component {
 			dropAddress: '',
 			latLngDrop: [],
 			isEnterPhoneNum: false,
-			isEnter: false,
 			price: 1,
 			distance: 0
 		};
@@ -20,6 +19,7 @@ export default class BookingForm extends Component {
 
 	componentDidMount() {
 		console.log("BookingForm ne: ",this.props.google);
+		console.log(this.state.distance);
 	}
 	
 	onChangePickAddress = pickAddress => {
@@ -45,6 +45,25 @@ export default class BookingForm extends Component {
 			.then(result => getLatLng(result[0]))
 			.then(latLng => {
 				this.setState({ dropAddress, latLngDrop: [latLng.lat, latLng.lng] })
+				const { latLngPick, latLngDrop } = this.state;
+				var service = new this.props.google.maps.DistanceMatrixService();
+				service.getDistanceMatrix({
+					origins: ["" + latLngPick],
+					destinations: ["" + latLngDrop],
+					travelMode: this.props.google.maps.TravelMode.DRIVING,
+				},
+					(response, status) => {
+						if (status === this.props.google.maps.DistanceMatrixStatus.OK ) {
+							var distance = response.rows[0].elements[0].distance.text;
+							var price = 2000 * response.rows[0].elements[0].distance.value;
+							console.log("distance = ", distance)
+							console.log("price = ", price)
+							this.setState({
+								distance: distance,
+								price: price 
+							})
+						}
+				});
 			})
 			.catch(error => console.log('Error Drop address ', error))
 	};
@@ -52,29 +71,8 @@ export default class BookingForm extends Component {
 	onClickOrderBtn = event => {
 		event.preventDefault();
 		console.log("onClickOrderBtn");
-		// if (this.state.isEnterPhoneNum === false) {
-		// 	this.setState({
-		// 		isEnterPhoneNum: true
-		// 	});
-		// } else {
-			const { latLngPick, latLngDrop } = this.state;
-			var service = new this.props.google.maps.DistanceMatrixService();
-			service.getDistanceMatrix({
-				origins: ["" + latLngPick],
-				destinations: ["" + latLngDrop],
-				travelMode: this.props.google.maps.TravelMode.DRIVING,
-			},
-				(response, status) => {
-					if (status === this.props.google.maps.DistanceMatrixStatus.OK ) {
-						var dis = response.rows[0].elements[0].distance.text;
-						var price = 2000 * response.rows[0].elements[0].distance.value;
-						this.setState({
-							distance: dis,
-							price: price
-						})
-					}
-			});
-		// }
+		if (this.state.isEnterPhoneNum === false) 
+			this.setState({ isEnterPhoneNum: true });
 	}
 
 	onHandleEnterPhoneNum = e => {
@@ -173,23 +171,25 @@ export default class BookingForm extends Component {
 						</div>
 						)}
 					</PlacesAutocomplete>
+
+								
 				
-					{/* {(!isEnterPhoneNum) && 
+					{(!isEnterPhoneNum) && 
 						(<button
 							data-toggle="modal" data-target="#showModal"
 							className="btn btn-info tim-kiem" 
 							onClick = {this.onClickOrderBtn}>
 							Đặt Xe
 						</button>)
-					} */}
+					}
 					
-					{/* {(isEnterPhoneNum && isEnter) && */}
+					{(isEnterPhoneNum && isEnter) && (
 						<button
 							className="btn btn-info tim-kiem" 
 							onClick = {this.onClickOrderBtn}>
 							Đặt Xe
 						</button>
-					{/* } */}
+					)}
 				</form>
 
 
