@@ -14,16 +14,19 @@ class nav extends Component {
 
     KiemTraState = () => {
         if(this.Auth.loggedIn()){
-            return (
-                <NavLink to="/info">
-                    <li className="cli"> 
-                        <i className="fa fa-user-circle-o"></i>
-                        Thông Tin Cá Nhân
-                    </li>
-                </NavLink>
-            )
-        } else {
-            if(this.props.isEdit){
+
+            if(this.props.userName){
+
+                return (
+                    <NavLink to="/admin/list_driver">
+                        <li className="cli"> 
+                            <i className="fa fa-user-circle-o"></i>
+                            Quản Lý Tài Xế
+                        </li>
+                    </NavLink>
+                )
+
+            } else {
                 return (
                     <NavLink to="/info">
                         <li className="cli"> 
@@ -32,6 +35,33 @@ class nav extends Component {
                         </li>
                     </NavLink>
                 )
+            }         
+
+        } else {
+            if(this.props.isEdit){
+                if(this.props.userName){
+
+                    return (
+                        <NavLink to="/admin/list_driver">
+                            <li className="cli"> 
+                                <i className="fa fa-user-circle-o"></i>
+                                Quản Lý Tài Xế
+                            </li>
+                        </NavLink>
+                    )
+
+                } else {
+
+                    return (
+                        <NavLink to="/info">
+                            <li className="cli"> 
+                                <i className="fa fa-user-circle-o"></i>
+                                Thông Tin Cá Nhân
+                            </li>
+                        </NavLink>
+                    )
+                }
+
             } else {
                 return (
                     <NavLink to="/login">
@@ -48,6 +78,7 @@ class nav extends Component {
     
 
     render() {
+        
         return (
             <nav>
                 <ul>
@@ -74,7 +105,8 @@ class nav extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-      isEdit: state.isEdit
+      isEdit: state.isEdit,
+      userName: state.userName
     }
   }
   const mapDispatchToProps = (dispatch, ownProps) => {

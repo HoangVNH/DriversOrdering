@@ -37,9 +37,7 @@ router.post("/api/login", function (req, res) {
     const PhoneExist = Account.getAccountByPhone(user.PhoneNum);
     PhoneExist.then(function(data){
         if(data){
-
             var params = data;
-
             // ! Kiểm tra password và giải mã password
             var status = helper.compare_password(user.Password, params.password);
             if(!status){
@@ -48,7 +46,7 @@ router.post("/api/login", function (req, res) {
             }else{
     
                 // ! tạo và gán mã Token
-                const token = jwt.sign({ _id: params._id }, process.env.TOKEN_SECRET);
+                const token = jwt.sign({ _id: params._id, user: params.userName }, process.env.TOKEN_SECRET);
                 res.header('token', token).send("Đăng Nhập Thành Công");
             }
 
@@ -105,8 +103,8 @@ router.post('/api/getaccount', function(req, res){
 
     var user = req.body;
 
-    const UserID = Account.getAccountByID(user.idUser);
-    UserID.then(function(data){
+    const getIdUser = Account.getAccountByID(user.idUser);
+    getIdUser.then(function(data){
         if(data){
 
             res.send(data);
@@ -134,6 +132,32 @@ router.post('/api/update', function(req, res){
     })
 })
 
+// TODO: Cập Nhật Trạng Thái 1 account
+router.post('/api/getaccount/drive', function (req, res) {
+    var id = req.body.id;
+    var status = req.body.status;
+
+    if(status == 'true'){
+        status = 'false';
+
+    } else {
+        status = 'true';
+
+    }
+    
+    const IDstatus = Account.updateAccountStatus(id, status);
+    IDstatus.then(function(data){
+        if(data){
+
+            res.send(data);
+
+        } else {
+            
+        }
+    })
+});
+
+
 
 router.get('/api/account/:_id', function (req, res) {
     Account.getAccountById(req.params._id, function (err, account) {
@@ -144,16 +168,6 @@ router.get('/api/account/:_id', function (req, res) {
     });
 });
 
-router.put('/api/account/:_id', function (req, res) {
-    var id = req.params._id;
-    var account = req.body;
-    Account.updateAccount(id, account, {}, function (err, account) {
-        if (err) {
-            throw err;
-        }
-        res.json(customer);
-    });
-});
 
 
 module.exports = router;

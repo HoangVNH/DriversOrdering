@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
+import decode from 'jwt-decode';
+
 import { connect } from 'react-redux';
 import AuthService from './AuthService';
 
@@ -16,7 +18,8 @@ class Login extends Component {
         this.state = {
             PhoneNum: '',
             Password: '',
-            thongbao: null
+            thongbao: null,
+            check: null
         }
     }
 
@@ -45,8 +48,19 @@ class Login extends Component {
         this.Auth.login(this.state.PhoneNum,this.state.Password)
             .then(res =>{
                 if(res.headers.token){
-                    this.props.changeEditStatus();
-                    this.props.history.replace('/');
+
+                    const decoded = decode((res.headers.token));
+                    const admin = '0123456789';
+                    if(decoded.user === admin)
+                    {
+                        this.props.checkUser(decoded.user);
+
+                        this.props.changeEditStatus();
+                        this.props.history.replace('/admin/list_driver');
+                    } else {
+                        this.props.changeEditStatus();
+                        this.props.history.replace('/');
+                    }               
                 }
                 else {
                     this.setState({ thongbao: res.data })
@@ -135,8 +149,8 @@ return {
     changeEditStatus: () => {
         dispatch({type: "CHANGE_EDIT_STATUS"})
     },
-    getUser: (PhoneNum) => {
-        dispatch({type: "PHONE_USER", PhoneNum})
+    checkUser: (userName) => {
+        dispatch({type: "CHECK_USER", userName})
     }
 }
 } 

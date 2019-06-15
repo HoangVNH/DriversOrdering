@@ -33,12 +33,20 @@ class ListDriver extends Component {
         } else {
 
             const Auths = new AuthService();
-
-            getListDrive().then((res) => {
-                this.setState({
-                    datas: res
+            const profile = Auths.getProfile();
+            
+            const UserActive = profile.user;
+            
+            if(UserActive === '0123456789'){
+                getListDrive().then((res) => {
+                    this.setState({
+                        datas: res
+                    })
                 })
-            })
+            } else {
+                this.props.history.replace('/');
+            }
+            
         }
     }
 
@@ -49,6 +57,7 @@ class ListDriver extends Component {
                     <Driver
                         key={key}
                         id={key}
+                        drive={value._id}
                         drive_name={value.permission.name}
                         drive_phone={value.permission.mobileNum}
                         drive_address={value.permission.address}

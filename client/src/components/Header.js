@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { NavLink } from 'react-router-dom';
 
 import '../css/login_register/login_register.css';
 import '../js/login';
@@ -50,7 +51,7 @@ class header extends Component {
                         <span className="menu-bar menu-bar-middle" />
                         <span className="menu-bar menu-bar-bottom" />
                     </div>
-                    <a href="/" className="logo">Mr.Xe Ômmm</a>
+                    <NavLink to="/" className="logo">Mr.Xe Ômmm</NavLink>
                 </div>
                 
 

@@ -85,7 +85,7 @@ function addAccount(name, phone, address, password) {
     return defer.promise;
 }
 
-// ! Update Account === CHƯA XONG
+// ! Update Account === XONG
 function updateAccount(id, name, phone, address) {
     var defer = q.defer();
 
@@ -116,11 +116,33 @@ function updateAccount(id, name, phone, address) {
     return defer.promise;
 }
 
+// ! Update Status Account === XONG
+function updateAccountStatus(id, status) {
+    var defer = q.defer();
+
+    account.findOneAndUpdate({
+        _id: id
+    }, {
+        $set: {
+            active: status
+        }
+    }, function (err, dulieu) {
+        if (err) {
+            defer.reject(err);
+
+        } else {
+
+            defer.resolve(dulieu);
+        }
+    })
+    return defer.promise;
+}
 
 module.exports = {
     getAccount: getAccount,
     getAccountByPhone: getAccountByPhone,
     addAccount: addAccount,
     updateAccount: updateAccount,
-    getAccountByID: getAccountByID
+    getAccountByID: getAccountByID,
+    updateAccountStatus: updateAccountStatus
 }

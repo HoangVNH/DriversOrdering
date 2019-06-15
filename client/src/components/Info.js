@@ -75,15 +75,20 @@ export default class Edit_Info extends Component {
             
             const Auths = new AuthService();
             const profile = Auths.getProfile();
+            const UserActive = profile.user;
 
-            var IdUser = profile._id;
-            getData(IdUser).then((res) => {
-                this.setState({
-                    Name: res.permission.name,
-                    PhoneNum: res.permission.mobileNum,
-                    Address: res.permission.address
+            if(UserActive !== '0123456789'){
+                var IdUser = profile._id;
+                getData(IdUser).then((res) => {
+                    this.setState({
+                        Name: res.permission.name,
+                        PhoneNum: res.permission.mobileNum,
+                        Address: res.permission.address
+                    })
                 })
-            })
+            } else {
+                this.props.history.replace('/');
+            }
             
         }
     }
