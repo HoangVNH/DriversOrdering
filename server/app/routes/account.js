@@ -44,10 +44,17 @@ router.post("/api/login", function (req, res) {
     
                 return res.send("Nhập sai mật khẩu");
             }else{
-    
-                // ! tạo và gán mã Token
-                const token = jwt.sign({ _id: params._id, user: params.userName }, process.env.TOKEN_SECRET);
-                res.header('token', token).send("Đăng Nhập Thành Công");
+                console.log(params.active);
+                if(params.active === false){
+
+                    return res.send("Tài khoản của bạn chưa được mở");
+                } else {
+
+                    // ! tạo và gán mã Token
+                    const token = jwt.sign({ _id: params._id, user: params.userName }, process.env.TOKEN_SECRET);
+                    res.header('token', token).send("Đăng Nhập Thành Công");
+                }
+            
             }
 
         } else {
