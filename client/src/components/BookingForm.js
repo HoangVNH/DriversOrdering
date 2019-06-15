@@ -78,6 +78,10 @@ export default class BookingForm extends Component {
 		if (this.state.isEnterPhoneNum === false) 
 			this.setState({ isEnterPhoneNum: false });
 	}
+
+	changeClassName = () => {
+		
+	}
 	
 	render() {
 		
@@ -166,9 +170,33 @@ export default class BookingForm extends Component {
 						)}
 					</PlacesAutocomplete>
 
-					<div>
-						<p>zjhfkdjf</p>
-					</div>			
+					{					 
+						(this.state.latLngPick && this.state.latLngDrop) && (
+							
+							<div className="showInfoCheck">
+								<div className="price">
+									<h4>{this.state.price} KM</h4>
+								</div>
+								<div className="khoangcach">
+									<h4>{this.state.distance} <span>VNĐ</span></h4>
+								</div>
+							</div>
+						)
+					}
+
+					{
+						(!this.state.latLngPick && !this.state.latLngDrop) && (
+							
+							<div className="showInfo">
+								<div className="price">
+									<h4>{this.state.price} KM</h4>
+								</div>
+								<div className="khoangcach">
+									<h4>{this.state.distance} <span>VNĐ</span></h4>
+								</div>
+							</div>
+						)
+					}
 				
 					{
 						(this.state.isEnterPhoneNum && 

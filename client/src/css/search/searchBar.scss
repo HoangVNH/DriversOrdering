@@ -41,9 +41,52 @@
 .tim-kiem{
     position: absolute;
     left: 30px;
-    top: 250px;
+    top: 300px;
     padding: 6px 27px;
     width: 450px;
+}
+.showInfoCheck{
+    display: none;
+    
+}
+.showInfo{
+    position: absolute;
+    left: 30px;
+    top: 250px;
+    width: 450px;
+    height: 40px;
+    background-color: #b11a33;
+    .price{
+        float: left;
+        background-color: #748fd8;
+        width: 225px;
+        height: 40px;
+        text-align: justify;
+        color: white;
+        h4{
+            margin-left: 30px;
+            margin-top: 5px;
+            font-size: 22px;
+            font-weight: 500;
+        }
+        
+    }
+    .khoangcach{
+        float: left;
+        background-color: #74d88a;
+        width: 225px;
+        height: 40px;
+        text-align: right;
+        h4{
+            color: #b11a33;
+            margin-right: 30px;
+            margin-top: 5px;
+            span{
+                font-size: 18px;    
+            }
+        }
+    }
+
 }
 
 .searchBar_to{
