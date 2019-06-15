@@ -19,8 +19,6 @@ $(document).ready(function () {
     });
 
     $('.tab a').on('click', function (e) {
-
-        
         $(this).parent().siblings().removeClass('active');
         $(this).parent().addClass('active');
     })

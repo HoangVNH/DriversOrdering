@@ -3,8 +3,7 @@ const redux = require('redux');
 
 
 const InitialState = {
-    isEdit: false, // không hiển thị NAV
-    userName: null
+    isEdit: false // không hiển thị NAV
 }
 
 const allReducer = (state = InitialState, action) => {
@@ -15,9 +14,6 @@ const allReducer = (state = InitialState, action) => {
             // copy state ra sau đó ghi đè
             return {...state, isEdit: !state.isEdit}
 
-        case "CHECK_USER":
-            // copy state ra sau đó ghi đè
-            return {...state, userName: action.userName}
         default:
             return state
     }

@@ -53,8 +53,6 @@ class Login extends Component {
                     const admin = '0123456789';
                     if(decoded.user === admin)
                     {
-                        this.props.checkUser(decoded.user);
-
                         this.props.changeEditStatus();
                         this.props.history.replace('/admin/list_driver');
                     } else {
@@ -145,14 +143,11 @@ const mapStateToProps = (state, ownProps) => {
   
 // dùng hàm nào trong store thì ghi vào đây
 const mapDispatchToProps = (dispatch, ownProps) => {
-return {
-    changeEditStatus: () => {
-        dispatch({type: "CHANGE_EDIT_STATUS"})
-    },
-    checkUser: (userName) => {
-        dispatch({type: "CHECK_USER", userName})
+    return {
+        changeEditStatus: () => {
+            dispatch({type: "CHANGE_EDIT_STATUS"})
+        }
     }
-}
 } 
 
 

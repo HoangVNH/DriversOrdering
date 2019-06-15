@@ -15,18 +15,11 @@ class nav extends Component {
     KiemTraState = () => {
         if(this.Auth.loggedIn()){
 
-            if(this.props.userName){
+            const Auths = new AuthService();
+            const profile = Auths.getProfile();
+            const UserActive = profile.user;
 
-                return (
-                    <NavLink to="/admin/list_driver">
-                        <li className="cli"> 
-                            <i className="fa fa-user-circle-o"></i>
-                            Quản Lý Tài Xế
-                        </li>
-                    </NavLink>
-                )
-
-            } else {
+            if(UserActive !== '0123456789'){
                 return (
                     <NavLink to="/info">
                         <li className="cli"> 
@@ -35,47 +28,29 @@ class nav extends Component {
                         </li>
                     </NavLink>
                 )
-            }         
-
-        } else {
-            if(this.props.isEdit){
-                if(this.props.userName){
-
-                    return (
-                        <NavLink to="/admin/list_driver">
-                            <li className="cli"> 
-                                <i className="fa fa-user-circle-o"></i>
-                                Quản Lý Tài Xế
-                            </li>
-                        </NavLink>
-                    )
-
-                } else {
-
-                    return (
-                        <NavLink to="/info">
-                            <li className="cli"> 
-                                <i className="fa fa-user-circle-o"></i>
-                                Thông Tin Cá Nhân
-                            </li>
-                        </NavLink>
-                    )
-                }
-
             } else {
                 return (
-                    <NavLink to="/login">
+                    <NavLink to="/admin/list_driver">
                         <li className="cli"> 
-                            <i className="fa fa-sign-in"></i>
-                            Đăng Nhập
+                            <i className="fa fa-user-circle-o"></i>
+                            Quản Lý Tài Xế
                         </li>
                     </NavLink>
                 )
-            }
+            }        
+
+        } else {
+            return (
+                <NavLink to="/login">
+                    <li className="cli"> 
+                        <i className="fa fa-user-circle-o"></i>
+                        Đăng Nhập
+                    </li>
+                </NavLink>
+            )
         }   
 
     }
-    
 
     render() {
         
@@ -105,8 +80,7 @@ class nav extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-      isEdit: state.isEdit,
-      userName: state.userName
+      isEdit: state.isEdit
     }
   }
   const mapDispatchToProps = (dispatch, ownProps) => {
