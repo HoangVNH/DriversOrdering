@@ -4,7 +4,6 @@ import { Route, Switch } from 'react-router-dom';
 import Map from '../components/Map';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
-import Forget_pass from '../components/Forget_pass';
 import NotFound from '../components/NotFound';
 import About from '../components/About';
 import Info from '../components/Info';
@@ -17,7 +16,6 @@ class Urls extends Component {
                 <Route path="/" exact component={Map} />
                 <Route path="/login" exact component={Login} />
                 <Route path="/signup" exact component={Signup} />
-                <Route path="/login/forget_pass" exact component={Forget_pass} />
                 <Route path="/about" exact component={About} />
                 <Route path="/info" exact component={Info} />
                 <Route path="/admin/list_driver" exact component={ListDriver} />
