@@ -11,15 +11,16 @@ class nav extends Component {
         super(props)
         this.Auth = new AuthService();
     }
+    
 
     KiemTraState = () => {
         if(this.Auth.loggedIn()){
 
             const Auths = new AuthService();
-            const profile = Auths.getProfile();
-            const UserActive = profile.user;
-
-            if(UserActive !== '0123456789'){
+            const getprofileUser = Auths.getProfile();
+            const UserActive = getprofileUser;
+            
+            if(UserActive.user !== '0123456789'){
                 return (
                     <NavLink to="/info">
                         <li className="cli"> 
@@ -28,6 +29,7 @@ class nav extends Component {
                         </li>
                     </NavLink>
                 )
+               
             } else {
                 return (
                     <NavLink to="/admin/list_driver">
@@ -53,6 +55,7 @@ class nav extends Component {
     }
 
     render() {
+
         
         return (
             <nav>
