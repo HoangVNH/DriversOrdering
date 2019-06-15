@@ -11,9 +11,9 @@ export default class BookingForm extends Component {
 			latLngPick: [],
 			dropAddress: '',
 			latLngDrop: [],
-			isEnterPhoneNum: false,
 			price: 1,
-			distance: 0
+			distance: 0,
+			isEnterPhoneNum: false
 		};
 	}
 
@@ -35,7 +35,6 @@ export default class BookingForm extends Component {
 			.then(result => getLatLng(result[0]))
 			.then(latLng => {
 				this.setState({ pickAddress, latLngPick: [latLng.lat, latLng.lng] });
-				console.log('pickAddress & latLng', pickAddress, latLng);
 			})
 			.catch(error => console.log('Error Pick address ', error))
 	};
@@ -56,8 +55,6 @@ export default class BookingForm extends Component {
 						if (status === this.props.google.maps.DistanceMatrixStatus.OK ) {
 							var distance = response.rows[0].elements[0].distance.text;
 							var price = 2000 * response.rows[0].elements[0].distance.value;
-							console.log("distance = ", distance)
-							console.log("price = ", price)
 							this.setState({
 								distance: distance,
 								price: price 
@@ -75,19 +72,16 @@ export default class BookingForm extends Component {
 			this.setState({ isEnterPhoneNum: true });
 	}
 
-	onHandleEnterPhoneNum = e => {
-		e.preventDefault();
-		console.log("onHandleEnterPhoneNum");
-		if (this.state.isEnter === false) {
-			this.setState({
-				isEnter: true
-			});
-		}
+	onClickCancelBtn = event => {
+		event.preventDefault();
+		console.log("onClickCancelBtn");
+		if (this.state.isEnterPhoneNum === false) 
+			this.setState({ isEnterPhoneNum: false });
 	}
 	
 	render() {
 		
-		let { isEnterPhoneNum, isEnter } = this.state;
+		let isEnterPhoneNum  = this.state.isEnterPhoneNum;
 
 		return (
 			<div>
@@ -172,48 +166,53 @@ export default class BookingForm extends Component {
 						)}
 					</PlacesAutocomplete>
 
-								
+					<div>
+						<p>zjhfkdjf</p>
+					</div>			
 				
-					{(!isEnterPhoneNum) && 
-						(<button
-							data-toggle="modal" data-target="#showModal"
-							className="btn btn-info tim-kiem" 
-							onClick = {this.onClickOrderBtn}>
-							Đặt Xe
-						</button>)
+					{
+						(this.state.isEnterPhoneNum && 
+							(<button
+								className="btn btn-info tim-kiem"
+								onClick={this.onClickCancelBtn} >
+								Huỷ
+							</button>))
+					}
+
+					{
+						(!this.state.isEnterPhoneNum && 
+							(<button
+								data-toggle="modal" data-target="#showModal"
+								className="btn btn-info tim-kiem"
+								onClick={this.onClickOrderBtn}>
+								Đặt Xe
+							</button>))	
 					}
 					
-					{(isEnterPhoneNum && isEnter) && (
-						<button
-							className="btn btn-info tim-kiem" 
-							onClick = {this.onClickOrderBtn}>
-							Đặt Xe
-						</button>
-					)}
 				</form>
 
 
 				<div className="modal fade" id="showModal" tabIndex={-1} role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-					<form>
+					<form onSubmit={(e) => e.preventDefault()}>
 						<div className="modal-dialog modal-dialog-centered" role="document">
 							<div className="modal-content">
-							<div className="modal-header">
-								<h5 className="modal-title" id="exampleModalCenterTitle">Nhập Số Điện Thoại Của Bạn</h5>
-								<button type="button" className="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">×</span>
-								</button>
-							</div>
-							<div className="modal-body">
-								
-								<div className="form-group d-flex">
-									<input className="form-control" type="tel"  placeholder="Số điện thoại" />
+								<div className="modal-header">
+									<h5 className="modal-title" id="exampleModalCenterTitle">Nhập Số Điện Thoại Của Bạn</h5>
+									<button type="button" className="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">×</span>
+									</button>
 								</div>
-								
-							</div>
-							<div className="modal-footer">
-								<button type="button" className="btn btn-dark" data-dismiss="modal">Đóng</button>
-								<button type="button" className="btn btn-danger" onClick= {this.onHandleEnterPhoneNum} >Hoàn Tất</button>
-							</div>
+								<div className="modal-body">
+									
+									<div className="form-group d-flex">
+										<input className="form-control" type="tel"  placeholder="Số điện thoại" />
+									</div>
+									
+								</div>
+								<div className="modal-footer">
+									<button type="button" className="btn btn-dark" data-dismiss="modal">Đóng</button>
+									<button type="button" className="btn btn-danger" data-dismiss="modal">Hoàn Tất</button>
+								</div>
 							</div>
 						</div>
 					</form>
