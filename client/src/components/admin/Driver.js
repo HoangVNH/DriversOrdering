@@ -20,6 +20,7 @@ class Driver extends Component {
         var idUser = this.props.drive;
         var statusUser = this.props.drive_active;
 
+        
         changeActive(idUser, statusUser).then((res) => {
             this.setState({
                 Active: res.active

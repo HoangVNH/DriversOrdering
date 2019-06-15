@@ -44,7 +44,7 @@ router.post("/api/login", function (req, res) {
     
                 return res.send("Nhập sai mật khẩu");
             }else{
-                console.log(params.active);
+
                 if(params.active === false){
 
                     return res.send("Tài khoản của bạn chưa được mở");
@@ -176,14 +176,14 @@ router.post('/api/getaccount/drive', function (req, res) {
     var id = req.body.id;
     var status = req.body.status;
 
-    if(status == 'true'){
-        status = 'false';
+    if(status == true){
+        status = false;
 
     } else {
-        status = 'true';
+        status = true;
 
     }
-    
+    // res.send(status);
     const IDstatus = Account.updateAccountStatus(id, status);
     IDstatus.then(function(data){
         if(data){
